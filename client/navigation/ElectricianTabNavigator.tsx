@@ -3,23 +3,25 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
 import { Platform, StyleSheet } from "react-native";
-import HomeStackNavigator from "@/navigation/HomeStackNavigator";
-import ProfileStackNavigator from "@/navigation/ProfileStackNavigator";
 import { useTheme } from "@/hooks/useTheme";
+import ElectricianJobsScreen from "@/screens/electrician/ElectricianJobsScreen";
+import ElectricianEarningsScreen from "@/screens/electrician/ElectricianEarningsScreen";
+import ElectricianProfileScreen from "@/screens/electrician/ElectricianProfileScreen";
 
-export type MainTabParamList = {
-  HomeTab: undefined;
-  ProfileTab: undefined;
+export type ElectricianTabParamList = {
+  Jobs: undefined;
+  Earnings: undefined;
+  Profile: undefined;
 };
 
-const Tab = createBottomTabNavigator<MainTabParamList>();
+const Tab = createBottomTabNavigator<ElectricianTabParamList>();
 
-export default function MainTabNavigator() {
+export default function ElectricianTabNavigator() {
   const { theme, isDark } = useTheme();
 
   return (
     <Tab.Navigator
-      initialRouteName="HomeTab"
+      initialRouteName="Jobs"
       screenOptions={{
         tabBarActiveTintColor: theme.tabIconSelected,
         tabBarInactiveTintColor: theme.tabIconDefault,
@@ -44,18 +46,28 @@ export default function MainTabNavigator() {
       }}
     >
       <Tab.Screen
-        name="HomeTab"
-        component={HomeStackNavigator}
+        name="Jobs"
+        component={ElectricianJobsScreen}
         options={{
-          title: "Home",
+          title: "Jobs",
           tabBarIcon: ({ color, size }) => (
-            <Feather name="home" size={size} color={color} />
+            <Feather name="briefcase" size={size} color={color} />
           ),
         }}
       />
       <Tab.Screen
-        name="ProfileTab"
-        component={ProfileStackNavigator}
+        name="Earnings"
+        component={ElectricianEarningsScreen}
+        options={{
+          title: "Earnings",
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="dollar-sign" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ElectricianProfileScreen}
         options={{
           title: "Profile",
           tabBarIcon: ({ color, size }) => (
