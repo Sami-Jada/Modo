@@ -1,0 +1,218 @@
+
+CRITICAL: This is a tightly integrated marketplace system. Consistency across all components is mandatory. If you cannot implement everything specified here, prioritize the backend state machine, payment flows, and data integrity over UI polish.
+Build a mobile-first home services marketplace for Jordan, starting with electricians only.
+Platforms
+Mobile App: iOS + Android using React Native
+Admin Panel: Web-based application (desktop-first), internal use only
+Backend: Single shared Node.js REST API
+Database: PostgreSQL
+Communication: Push notifications + API polling (no WebSockets)
+The mobile app and admin panel must use the same backend, data models, and business logic.
+User Roles
+Customer (Homeowner)
+Electrician
+Admin (Internal Ops)
+Role-based access control is enforced server-side. Admin functionality must not be exposed in the mobile app UI.
+Service Scope (v1)
+Only one service category is active and exposed: Electricians
+Backend and data models must support future service categories via configuration
+Do not build customer-facing UI for multiple services
+Do not reference future services in the mobile UI
+Pricing Rules (Strict)
+Fixed-price jobs only
+The price shown in the app is exactly what the customer pays for the defined scope
+Hourly pricing and open-ended estimates are not allowed
+Unexpected complexity is handled via predefined add-ons
+Add-ons require explicit customer approval before work continues
+Add-On System
+Add-ons are selected from a predefined, admin-managed catalog
+Electricians can request multiple add-ons per job, each requiring separate customer approval
+The system tracks add-on usage frequency per electrician for abuse detection
+Add-ons are presented as fixed-price additions with clear descriptions
+Marketplace Model
+Customers do not choose electricians
+Jobs are system-curated and broadcast to eligible electricians
+Electricians accept or decline jobs within a limited time window
+Acceptance creates a commitment
+Job Broadcast Matching
+Broadcasts sent to electricians within configurable radius (default: 5km)
+Acceptance window: 60-90 seconds (configurable)
+If no acceptance: retry with expanded radius or mark unfilled
+Maximum of 3-5 electricians per broadcast to avoid spam
+Electricians can only see one job at a time to prevent cherry-picking
+Eligibility based on: distance, availability status, probation status, and reliability score
+Job Lifecycle (Authoritative State Machine)
+CREATED → BROADCAST → ACCEPTED → EN_ROUTE → ARRIVED → IN_PROGRESS → COMPLETED → SETTLED
+State transitions are enforced server-side
+Invalid transitions are rejected
+Cancellations move jobs to CANCELLED with penalties applied based on state
+The UI cannot bypass or override the state machine
+Critical State Transition Rules
+All state transitions must be atomic and idempotent
+Timestamps must be recorded for each transition
+Only specific roles can trigger specific transitions
+Failed transitions must be logged and safely retryable
+Payments
+Card payments: authorize at ACCEPTED, capture at COMPLETED
+Cash payments: allowed
+Platform commission for cash jobs is tracked via electrician balances
+Electricians have configurable credit limits
+Weekly settlement process enforces balances and access
+Payment Transaction Rules
+Critical atomic transactions must include:
+Job acceptance: assign electrician + update state + authorize payment
+Job cancellation: update state + apply penalties + process refunds/releases
+Job completion: capture payment + calculate commission + update balances
+Settlement processing: update balances + record payouts + enforce credit limits
+Failed transactions must roll back completely and be safely retryable.
+Cancellation Rules
+Customer Cancellation Fees
+Before ACCEPTED: No fee
+After ACCEPTED, before EN_ROUTE: Reputation penalty only (no fee)
+EN_ROUTE or ARRIVED: Fixed cancellation fee (e.g., 5-8 JOD), split 80% electrician / 20% platform
+After ARRIVED: Full cancellation fee
+Electrician Cancellation Penalties
+No financial penalties in v1
+Reputation penalties tracked internally
+Cancellation patterns trigger: warnings → reduced priority → suspension → removal
+All cancellations are logged with reasons and timestamps
+Trust, Verification & Reputation
+Electricians require identity verification, trade proof, and admin approval
+All electricians start on probation
+Internal trust and reliability scores drive job priority and enforcement
+External trust signals are limited (e.g. "Verified", "Top Performer")
+Probation System
+First 10 jobs (configurable)
+Lower dispatch priority during probation
+Add-on usage monitored closely
+Manual admin review if issues arise during probation
+Internal Trust Score
+Composite score based on:
+Acceptance rate
+Cancellation behavior
+On-time arrival
+Add-on frequency vs. category average
+Dispute involvement
+Customer ratings
+This score affects job priority, broadcast eligibility, and access restrictions.
+Admin Panel (Required in v1)
+The web-based admin panel must support:
+Approving / rejecting electricians
+Viewing full job timelines and audit logs
+Resolving disputes (evidence-based, fast resolution)
+Applying manual overrides (all overrides logged with admin identity and reason)
+Managing electrician balances, credit limits, and settlements
+Adjusting credit limits for high-performing electricians
+Viewing trust scores and reputation metrics
+Flagging and reviewing abuse patterns
+Admin Audit Requirements
+Every admin action must be logged with: admin identity, timestamp, reason, affected entities
+Audit logs must be immutable
+Critical overrides require mandatory reason field
+Notifications
+Push notifications are sent on all job state changes
+The app fetches the latest state from the API after receiving a notification
+The server is always the source of truth
+Push notifications must be treated as signals only
+Notification Reliability
+Push notification delivery must be logged
+Track notification reliability per user
+If delivery fails repeatedly for a user, flag for manual follow-up
+SMS fallback is out of scope for v1 but system should track notification success rates
+Configuration vs Hardcoding
+Timeouts, penalties, thresholds, and limits must be configurable
+Do not hardcode business thresholds
+Enforcement should be based on patterns and internal reputation, not single events
+Configuration should be manageable via admin panel or config files
+Key Configurable Parameters
+Acceptance window duration
+Broadcast radius (initial and expanded)
+Credit limits (per electrician, adjustable by admin)
+Cancellation fee amounts
+Probation duration and job count
+Reputation score thresholds
+Add-on request limits
+Database Schema Requirements
+The database schema must use proper indexing for high-frequency queries.
+Critical Indexes
+jobs(status, electrician_id, customer_id, created_at)
+users(role, status, phone)
+payments(job_id, status)
+electrician_profiles(user_id, verification_status, availability_status)
+job_timeline(job_id, timestamp) for audit queries
+Data Integrity
+Use foreign key constraints
+Use check constraints for state validation
+Use appropriate data types (enums for states, timestamps for temporal data)
+Implement cascading deletes appropriately
+Error Handling Philosophy
+Payment Failures
+Notify customer with clear error message
+Allow retry with exponential backoff
+Auto-cancel job after 3 failed attempts
+Log all payment failures for admin review
+Network Failures
+Retry failed requests with exponential backoff
+Show user-friendly error messages (avoid technical jargon)
+Cache critical data locally when possible
+Gracefully degrade functionality when backend is unreachable
+No Electrician Acceptance
+Notify customer clearly ("No electrician available right now")
+Offer to retry with expanded radius
+Offer to schedule for later
+Do not fake availability
+Critical Failures
+All critical failures must be logged with full context
+Flagged for immediate admin review
+System must fail safely (never leave jobs in inconsistent state)
+Architecture & Scalability Requirements
+The backend must be designed for scalability and maintainability:
+The backend must be stateless and safe to scale horizontally.
+API requests must be short-lived and must not perform long-running tasks.
+Side effects (notifications, settlements, reputation recalculations, analytics) must be handled via background workers or async job queues, not inline with API requests.
+Database writes must be transactional, especially for job state transitions and payments.
+Job state transitions must be atomic and idempotent to safely handle retries and concurrency.
+The database schema must use proper indexing for high-frequency queries (e.g., job status, user roles).
+Push notifications must be treated as signals only; the API is the source of truth.
+Business thresholds (timeouts, penalties, limits) must be configurable, not hardcoded.
+Avoid microservices and unnecessary architectural complexity; build a modular monolith with clear domain boundaries.
+Background Jobs & Async Processing
+Use a job queue system (e.g., BullMQ, Agenda, or pg-boss)
+Async tasks must include:
+Push notifications
+Settlement processing
+Reputation updates
+Job timeout enforcement (auto-cancel ghosted jobs)
+Broadcast retries and expiry
+Analytics processing
+Failed jobs must be retryable and logged
+Critical jobs (payments, state changes) must not be lost
+Implement dead letter queues for failed job investigation
+Domain Boundaries
+Clear separation between:
+User Domain: Identity, roles, status, reputation
+Job Domain: Job creation, state machine, assignments, cancellations, add-ons
+Payment Domain: Card/cash processing, platform fees, balances, credit limits, settlements
+Trust & Reputation Domain: Verification, probation, reliability scores, abuse detection
+Notification Domain: Push delivery, logging, retry logic
+Admin/Ops Domain: Overrides, disputes, reviews, audit logs
+Each domain should have clear responsibilities and minimal coupling.
+Explicitly Out of Scope (Do Not Build)
+Hourly pricing
+Customer selection of electricians
+Web booking for customers
+Promotions, coupons, wallets, tipping
+Multiple service categories in UI
+Property manager workflows
+In-app calling/voice
+Live location tracking (v2 feature)
+WebSocket connections
+SMS notifications
+Social media login
+Referral programs
+Loyalty programs
+Multi-worker jobs
+Subscription plans
+
+Build the system strictly according to these rules. Do not invent features, pricing logic, or workflows outside this specification.
+
