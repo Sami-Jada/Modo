@@ -109,7 +109,9 @@ Per design guidelines:
 ## Recent Changes
 
 ### December 30, 2025
-- Fixed service selection on iOS (nested Pressable conflict resolved by using Card's onPress prop)
+- Fixed JobCard touch handling on iOS (removed nested Pressable by using Card's onPress prop directly)
+- Improved UX: After submitting a job request, customers are now taken directly to the Activity tab to see their new job
+- Fixed navigation using CommonActions.reset for reliable post-submission navigation
 - Added job simulation feature for customers to test the full job workflow without real electricians
   - In JobDetailScreen, customers see a "Simulate" button that advances job through all states
   - Simulates: BROADCAST → ACCEPTED → EN_ROUTE → ARRIVED → IN_PROGRESS → COMPLETED
