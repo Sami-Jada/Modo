@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Pressable, Animated } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { ThemedText } from "@/components/ThemedText";
 import { Card } from "@/components/Card";
@@ -16,21 +16,6 @@ interface JobCardProps {
 
 export function JobCard({ job, onPress, userRole }: JobCardProps) {
   const { theme } = useTheme();
-  const scaleAnim = React.useRef(new Animated.Value(1)).current;
-
-  const handlePressIn = () => {
-    Animated.spring(scaleAnim, {
-      toValue: 0.98,
-      useNativeDriver: true,
-    }).start();
-  };
-
-  const handlePressOut = () => {
-    Animated.spring(scaleAnim, {
-      toValue: 1,
-      useNativeDriver: true,
-    }).start();
-  };
 
   const statusColor = JobStateColors[job.status] || theme.textSecondary;
   const isCompleted = ["COMPLETED", "SETTLED"].includes(job.status);
@@ -46,13 +31,7 @@ export function JobCard({ job, onPress, userRole }: JobCardProps) {
   };
 
   return (
-    <Pressable
-      onPress={onPress}
-      onPressIn={handlePressIn}
-      onPressOut={handlePressOut}
-    >
-      <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
-        <Card style={[styles.card, isCancelled && { opacity: 0.7 }]}>
+    <Card onPress={onPress} style={[styles.card, isCancelled && { opacity: 0.7 }]}>
           <View style={styles.header}>
             <View style={[styles.statusBadge, { backgroundColor: `${statusColor}20` }]}>
               <View style={[styles.statusDot, { backgroundColor: statusColor }]} />
@@ -130,9 +109,7 @@ export function JobCard({ job, onPress, userRole }: JobCardProps) {
               ) : null}
             </View>
           </View>
-        </Card>
-      </Animated.View>
-    </Pressable>
+    </Card>
   );
 }
 
