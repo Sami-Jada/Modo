@@ -1,0 +1,95 @@
+.container {
+  max-width: 1200px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.filters select {
+  padding: 8px 12px;
+  border: 1px solid var(--gray-300);
+  border-radius: 8px;
+  font-size: 14px;
+  min-width: 150px;
+}
+
+.truncate {
+  display: block;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.detailRow span {
+  color: var(--gray-500);
+  font-size: 14px;
+}
+
+.detailRow strong {
+  font-weight: 500;
+}
+
+.mono {
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.reasonSection {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.reasonSection span {
+  color: var(--gray-500);
+  font-size: 14px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.reasonSection p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.detailsSection {
+  padding: 12px 0;
+}
+
+.detailsSection span {
+  color: var(--gray-500);
+  font-size: 14px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.detailsSection pre {
+  background: var(--gray-50);
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  overflow-x: auto;
+}

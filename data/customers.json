@@ -1,0 +1,22 @@
+[
+  {
+    "id": "79f62299-f5c1-4eac-bdd0-3126931d5daf",
+    "name": "Sarah Ibrahim",
+    "email": "sarah.i@example.com",
+    "phone": "+962791111111",
+    "balance": 0,
+    "credits": 50,
+    "totalJobs": 3,
+    "createdAt": "2025-11-30T11:53:58.462Z"
+  },
+  {
+    "id": "990eba6b-b9e6-41d8-878b-9dd716b23f47",
+    "name": "Khaled Nasser",
+    "email": "khaled.n@example.com",
+    "phone": "+962792222222",
+    "balance": 25,
+    "credits": 0,
+    "totalJobs": 1,
+    "createdAt": "2025-12-15T11:53:58.462Z"
+  }
+]

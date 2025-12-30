@@ -1,0 +1,152 @@
+.container {
+  max-width: 900px;
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.configList {
+  display: flex;
+  flex-direction: column;
+}
+
+.configItem {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--gray-100);
+  align-items: center;
+}
+
+.configItem:last-child {
+  border-bottom: none;
+}
+
+.configInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.configLabel {
+  font-weight: 500;
+}
+
+.configKey {
+  font-size: 12px;
+  color: var(--gray-500);
+  font-family: monospace;
+}
+
+.configValue {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.configValue span:first-child {
+  font-family: monospace;
+  background: var(--gray-100);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.version {
+  font-size: 12px;
+  color: var(--gray-500);
+}
+
+.configActions {
+  display: flex;
+  gap: 4px;
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray-700);
+}
+
+.field input,
+.field textarea {
+  padding: 10px 12px;
+  border: 1px solid var(--gray-300);
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.modalActions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.historyList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.noHistory {
+  text-align: center;
+  color: var(--gray-500);
+  padding: 20px;
+}
+
+.historyItem {
+  padding: 12px;
+  background: var(--gray-50);
+  border-radius: 8px;
+}
+
+.historyHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.historyVersion {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.historyDate {
+  font-size: 12px;
+  color: var(--gray-500);
+}
+
+.historyValue {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.historyReason {
+  font-size: 13px;
+  color: var(--gray-600);
+}

@@ -1,0 +1,13 @@
+[
+  {
+    "adminId": "137633ce-e0d5-4990-a531-62df3df18d5d",
+    "adminEmail": "admin@kahraba.jo",
+    "action": "login_success",
+    "entityType": "auth",
+    "entityId": "137633ce-e0d5-4990-a531-62df3df18d5d",
+    "reason": "Admin logged in successfully",
+    "ipAddress": "172.31.68.194",
+    "id": "9251b25d-640a-48f1-8232-1aacf909c940",
+    "timestamp": "2025-12-30T12:33:48.953Z"
+  }
+]

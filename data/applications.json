@@ -1,0 +1,44 @@
+[
+  {
+    "id": "5d66383d-62b3-417c-9bd5-8573bec44579",
+    "name": "Ahmad Al-Masri",
+    "email": "ahmad@example.com",
+    "phone": "+962791234567",
+    "nationalId": "9851234567",
+    "specializations": [
+      "residential",
+      "commercial"
+    ],
+    "yearsExperience": 8,
+    "certifications": [
+      "Licensed Electrician",
+      "Safety Certified"
+    ],
+    "status": "pending",
+    "submittedAt": "2025-12-28T11:53:58.462Z",
+    "reviewedAt": null,
+    "reviewedBy": null,
+    "reviewReason": null
+  },
+  {
+    "id": "3b61e3af-56f8-4f63-9294-d6b8c17a218d",
+    "name": "Mohammad Khalil",
+    "email": "mohammad.k@example.com",
+    "phone": "+962797654321",
+    "nationalId": "9859876543",
+    "specializations": [
+      "industrial",
+      "maintenance"
+    ],
+    "yearsExperience": 12,
+    "certifications": [
+      "Master Electrician",
+      "Industrial Safety"
+    ],
+    "status": "pending",
+    "submittedAt": "2025-12-25T11:53:58.462Z",
+    "reviewedAt": null,
+    "reviewedBy": null,
+    "reviewReason": null
+  }
+]

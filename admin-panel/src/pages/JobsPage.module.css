@@ -1,0 +1,122 @@
+.container {
+  max-width: 1200px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.filters select {
+  padding: 8px 12px;
+  border: 1px solid var(--gray-300);
+  border-radius: 8px;
+  font-size: 14px;
+  min-width: 150px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.detailSection {
+  border-bottom: 1px solid var(--gray-100);
+  padding-bottom: 16px;
+}
+
+.detailSection h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray-700);
+  margin-bottom: 12px;
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.detailRow span {
+  color: var(--gray-500);
+  font-size: 14px;
+}
+
+.detailRow strong {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.timeline {
+  border-top: 1px solid var(--gray-200);
+  padding-top: 16px;
+}
+
+.timeline h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray-700);
+  margin-bottom: 16px;
+}
+
+.timelineItem {
+  display: flex;
+  gap: 12px;
+  padding-left: 8px;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.timelineItem:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 16px;
+  bottom: -8px;
+  width: 2px;
+  background: var(--gray-200);
+}
+
+.timelineDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.timelineContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.timelineStatus {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.timelineTime {
+  font-size: 12px;
+  color: var(--gray-500);
+}
+
+.timelineActor {
+  font-size: 11px;
+  color: var(--gray-400);
+  text-transform: capitalize;
+}
