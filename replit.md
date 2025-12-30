@@ -143,6 +143,13 @@ A comprehensive web-based admin panel for internal operations management:
   - In JobDetailScreen, customers see a "Simulate" button that advances job through all states
   - Simulates: BROADCAST → ACCEPTED → EN_ROUTE → ARRIVED → IN_PROGRESS → COMPLETED
   - Creates mock electrician "Ahmad (Demo)" when job is accepted
+- **Added profile settings screens** in `client/screens/profile/`:
+  - PaymentMethodsScreen: Shows cash-only notice with "coming soon" for cards
+  - SavedAddressesScreen: Manage saved service addresses with default selection
+  - NotificationsScreen: Toggle settings for job updates, arrival alerts, promotions
+  - HelpSupportScreen: Contact options (phone, email, WhatsApp) and FAQ accordion
+  - TermsOfServiceScreen: Full terms with sections on pricing, cancellation, liability
+  - PrivacyPolicyScreen: Privacy policy covering data collection, sharing, rights
 
 ### December 29, 2025
 - Fixed AuthContext.logout to use clearUser() instead of clearAllData() to preserve marketplace data between sessions
