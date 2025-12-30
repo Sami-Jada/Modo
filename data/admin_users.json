@@ -1,0 +1,11 @@
+[
+  {
+    "id": "137633ce-e0d5-4990-a531-62df3df18d5d",
+    "email": "admin@kahraba.jo",
+    "passwordHash": "$2b$10$yvBCK.36HHpHV6N3.klA8udAQ0R9aetzONegbUkI9F8uMiAA8NoWK",
+    "name": "System Admin",
+    "role": "superadmin",
+    "createdAt": "2025-12-30T11:53:58.461Z",
+    "lastLoginAt": null
+  }
+]

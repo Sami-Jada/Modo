@@ -106,9 +106,36 @@ Per design guidelines:
 - TanStack React Query for data fetching
 - No WebSocket implementation (polling + push notifications planned)
 
+### Admin Panel
+
+A comprehensive web-based admin panel for internal operations management:
+- **Access**: /admin endpoint on the Express server (port 5000)
+- **Default Credentials**: admin@kahraba.jo / admin123
+- **Technology**: React + Vite + TanStack React Query, served as static files
+
+**Features**:
+- Dashboard with key metrics (active electricians, pending applications, open disputes, revenue)
+- Electrician application review with approve/reject workflow (requires reason)
+- Electrician management (activate/suspend/deactivate with reasons)
+- Job timeline view showing full state history
+- Dispute management with status tracking and resolution
+- Customer management with balance and credit adjustments
+- Configuration management with version history
+- Complete audit log tracking all admin actions
+
+**Admin Panel Architecture**:
+- Frontend: `/admin-panel/` - React SPA with CSS modules
+- Backend routes: `/server/admin-routes.ts` - Session-authenticated REST API
+- Storage: `/server/admin-storage.ts` - JSON file-based (designed for easy PostgreSQL migration)
+- Shared types: `/shared/admin-types.ts` - Zod schemas for validation
+
 ## Recent Changes
 
 ### December 30, 2025
+- **Built complete admin panel** with dashboard, application review, electrician/job/dispute/customer management
+- Admin authentication with session-based login and bcrypt password hashing
+- All admin actions require reasons and are logged to immutable audit trail
+- Demo data seeding for testing (2 pending applications, 2 customers, default configs)
 - Fixed JobCard touch handling on iOS (removed nested Pressable by using Card's onPress prop directly)
 - Improved UX: After submitting a job request, customers are now taken directly to the Activity tab to see their new job
 - Fixed navigation using CommonActions.reset for reliable post-submission navigation

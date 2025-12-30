@@ -1,6 +1,9 @@
 import express from "express";
 import type { Request, Response, NextFunction } from "express";
+import session from "express-session";
 import { registerRoutes } from "./routes";
+import adminRoutes from "./admin-routes";
+import { adminStorage } from "./admin-storage";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -57,6 +60,22 @@ function setupBodyParsing(app: express.Application) {
   );
 
   app.use(express.urlencoded({ extended: false }));
+}
+
+function setupSession(app: express.Application) {
+  const sessionSecret = process.env.SESSION_SECRET || "kahraba-admin-dev-secret";
+  app.use(
+    session({
+      secret: sessionSecret,
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+        secure: process.env.NODE_ENV === "production",
+        httpOnly: true,
+        maxAge: 24 * 60 * 60 * 1000,
+      },
+    })
+  );
 }
 
 function setupRequestLogging(app: express.Application) {
@@ -219,7 +238,45 @@ function setupErrorHandler(app: express.Application) {
 (async () => {
   setupCors(app);
   setupBodyParsing(app);
+  setupSession(app);
   setupRequestLogging(app);
+
+  await adminStorage.initializeDefaultAdmin();
+  await adminStorage.seedDemoData();
+
+  app.use("/api/admin", adminRoutes);
+
+  app.use("/admin", express.static(path.resolve(process.cwd(), "admin-panel", "dist")));
+  app.get("/admin/*", (req: Request, res: Response) => {
+    const indexPath = path.resolve(process.cwd(), "admin-panel", "dist", "index.html");
+    if (fs.existsSync(indexPath)) {
+      res.sendFile(indexPath);
+    } else {
+      res.redirect("/admin-dev");
+    }
+  });
+
+  app.get("/admin-dev", (req: Request, res: Response) => {
+    res.send(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Kahraba Admin</title>
+        <style>
+          body { font-family: system-ui; max-width: 600px; margin: 100px auto; padding: 20px; }
+          h1 { color: #333; }
+          p { color: #666; line-height: 1.6; }
+          code { background: #f0f0f0; padding: 2px 6px; border-radius: 4px; }
+        </style>
+      </head>
+      <body>
+        <h1>Kahraba Admin Panel</h1>
+        <p>Admin panel is being set up. API is available at <code>/api/admin</code></p>
+        <p>Default login: <code>admin@kahraba.jo</code> / <code>admin123</code></p>
+      </body>
+      </html>
+    `);
+  });
 
   configureExpoAndLanding(app);
 
