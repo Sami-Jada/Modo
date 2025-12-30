@@ -8,7 +8,7 @@ import {
   ScrollView,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, CommonActions } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Feather } from "@expo/vector-icons";
 import { ThemedText } from "@/components/ThemedText";
@@ -88,8 +88,20 @@ export default function RequestJobScreen() {
         [{ 
           text: "View My Jobs", 
           onPress: () => {
-            navigation.goBack();
-            navigation.navigate("CustomerMain", { screen: "Activity" } as any);
+            navigation.dispatch(
+              CommonActions.reset({
+                index: 0,
+                routes: [
+                  {
+                    name: "CustomerMain",
+                    state: {
+                      routes: [{ name: "Activity" }],
+                      index: 0,
+                    },
+                  },
+                ],
+              })
+            );
           }
         }]
       );
