@@ -105,37 +105,34 @@ export default function RequestJobScreen() {
         <View style={styles.section}>
           <ThemedText style={styles.sectionTitle}>What do you need?</ThemedText>
           {SERVICE_OPTIONS.map((option) => (
-            <Pressable
+            <Card
               key={option.id}
               onPress={() => setSelectedService(option.id)}
+              style={[
+                styles.serviceCard,
+                selectedService === option.id && {
+                  borderColor: theme.primary,
+                  borderWidth: 2,
+                },
+              ]}
             >
-              <Card
+              <View style={styles.serviceInfo}>
+                <ThemedText style={styles.serviceName}>{option.name}</ThemedText>
+                <ThemedText style={[styles.servicePrice, { color: theme.primary }]}>
+                  {option.price} JOD
+                </ThemedText>
+              </View>
+              <View
                 style={[
-                  styles.serviceCard,
-                  selectedService === option.id && {
-                    borderColor: theme.primary,
-                    borderWidth: 2,
-                  },
+                  styles.radioOuter,
+                  { borderColor: selectedService === option.id ? theme.primary : theme.border },
                 ]}
               >
-                <View style={styles.serviceInfo}>
-                  <ThemedText style={styles.serviceName}>{option.name}</ThemedText>
-                  <ThemedText style={[styles.servicePrice, { color: theme.primary }]}>
-                    {option.price} JOD
-                  </ThemedText>
-                </View>
-                <View
-                  style={[
-                    styles.radioOuter,
-                    { borderColor: selectedService === option.id ? theme.primary : theme.border },
-                  ]}
-                >
-                  {selectedService === option.id ? (
-                    <View style={[styles.radioInner, { backgroundColor: theme.primary }]} />
-                  ) : null}
-                </View>
-              </Card>
-            </Pressable>
+                {selectedService === option.id ? (
+                  <View style={[styles.radioInner, { backgroundColor: theme.primary }]} />
+                ) : null}
+              </View>
+            </Card>
           ))}
         </View>
 
