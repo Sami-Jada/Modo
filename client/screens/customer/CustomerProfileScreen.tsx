@@ -2,6 +2,8 @@ import React from "react";
 import { View, StyleSheet, Pressable, ScrollView, Alert } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Feather } from "@expo/vector-icons";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
@@ -9,10 +11,14 @@ import { Card } from "@/components/Card";
 import { useTheme } from "@/hooks/useTheme";
 import { useAuth } from "@/contexts/AuthContext";
 import { Colors, Spacing, BorderRadius, Typography } from "@/constants/theme";
+import { RootStackParamList } from "@/navigation/RootStackNavigator";
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 export default function CustomerProfileScreen() {
   const insets = useSafeAreaInsets();
   const tabBarHeight = useBottomTabBarHeight();
+  const navigation = useNavigation<NavigationProp>();
   const { theme } = useTheme();
   const { user, logout } = useAuth();
 
@@ -32,12 +38,12 @@ export default function CustomerProfileScreen() {
   };
 
   const menuItems = [
-    { icon: "credit-card" as const, title: "Payment Methods", onPress: () => {} },
-    { icon: "map-pin" as const, title: "Saved Addresses", onPress: () => {} },
-    { icon: "bell" as const, title: "Notifications", onPress: () => {} },
-    { icon: "help-circle" as const, title: "Help & Support", onPress: () => {} },
-    { icon: "file-text" as const, title: "Terms of Service", onPress: () => {} },
-    { icon: "shield" as const, title: "Privacy Policy", onPress: () => {} },
+    { icon: "credit-card" as const, title: "Payment Methods", onPress: () => navigation.navigate("PaymentMethods") },
+    { icon: "map-pin" as const, title: "Saved Addresses", onPress: () => navigation.navigate("SavedAddresses") },
+    { icon: "bell" as const, title: "Notifications", onPress: () => navigation.navigate("Notifications") },
+    { icon: "help-circle" as const, title: "Help & Support", onPress: () => navigation.navigate("HelpSupport") },
+    { icon: "file-text" as const, title: "Terms of Service", onPress: () => navigation.navigate("TermsOfService") },
+    { icon: "shield" as const, title: "Privacy Policy", onPress: () => navigation.navigate("PrivacyPolicy") },
   ];
 
   return (
