@@ -41,6 +41,22 @@ const ACTION_LABELS: Partial<Record<JobStatus, string>> = {
   IN_PROGRESS: "Complete Job",
 };
 
+const SIMULATION_NEXT_STATUS: Partial<Record<JobStatus, JobStatus>> = {
+  BROADCAST: "ACCEPTED",
+  ACCEPTED: "EN_ROUTE",
+  EN_ROUTE: "ARRIVED",
+  ARRIVED: "IN_PROGRESS",
+  IN_PROGRESS: "COMPLETED",
+};
+
+const SIMULATION_LABELS: Partial<Record<JobStatus, string>> = {
+  BROADCAST: "Simulate: Electrician Accepts",
+  ACCEPTED: "Simulate: Electrician En Route",
+  EN_ROUTE: "Simulate: Electrician Arrived",
+  ARRIVED: "Simulate: Work Started",
+  IN_PROGRESS: "Simulate: Job Completed",
+};
+
 export default function JobDetailScreen() {
   const insets = useSafeAreaInsets();
   const { theme } = useTheme();
@@ -141,6 +157,42 @@ export default function JobDetailScreen() {
     );
   };
 
+  const handleSimulateProgress = async () => {
+    if (!job) return;
+    const nextStatus = SIMULATION_NEXT_STATUS[job.status];
+    if (!nextStatus) return;
+
+    setIsUpdating(true);
+    await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+
+    const now = new Date();
+    const updates: Partial<Job> = {
+      status: nextStatus,
+      timeline: [...job.timeline, { status: nextStatus, timestamp: now }],
+    };
+
+    if (nextStatus === "ACCEPTED") {
+      updates.electricianId = "sim-electrician-001";
+      updates.electricianName = "Ahmad (Demo)";
+      updates.acceptedAt = now;
+    }
+
+    if (nextStatus === "COMPLETED") {
+      updates.completedAt = now;
+    }
+
+    const updatedJob = await updateJob(job.id, updates);
+    if (updatedJob) {
+      setJob(updatedJob);
+    }
+
+    setIsUpdating(false);
+
+    if (nextStatus === "COMPLETED") {
+      Alert.alert("Job Completed", "The simulated job has been completed successfully!");
+    }
+  };
+
   const handleRequestAddOn = () => {
     if (!job) return;
     navigation.navigate("AddOnRequest", { jobId: job.id });
@@ -166,7 +218,9 @@ export default function JobDetailScreen() {
   }
 
   const isElectrician = user?.role === "electrician";
+  const isCustomer = user?.role === "customer";
   const canUpdateStatus = isElectrician && NEXT_STATUS[job.status] && job.status !== "COMPLETED";
+  const canSimulate = isCustomer && SIMULATION_NEXT_STATUS[job.status] && !["COMPLETED", "SETTLED", "CANCELLED"].includes(job.status);
   const canCancel = !["COMPLETED", "SETTLED", "CANCELLED"].includes(job.status);
   const statusColor = JobStateColors[job.status] || theme.textSecondary;
 
@@ -370,6 +424,35 @@ export default function JobDetailScreen() {
           </Pressable>
         </View>
       ) : null}
+
+      {canSimulate ? (
+        <View
+          style={[
+            styles.footer,
+            { paddingBottom: insets.bottom + Spacing.lg, backgroundColor: theme.backgroundRoot },
+          ]}
+        >
+          <Pressable
+            style={({ pressed }) => [
+              styles.simulateButton,
+              { backgroundColor: theme.warning, opacity: pressed || isUpdating ? 0.8 : 1 },
+            ]}
+            onPress={handleSimulateProgress}
+            disabled={isUpdating}
+          >
+            {isUpdating ? (
+              <ActivityIndicator color="#FFFFFF" />
+            ) : (
+              <>
+                <Feather name="play" size={22} color="#FFFFFF" />
+                <ThemedText style={styles.actionButtonText}>
+                  {SIMULATION_LABELS[job.status]}
+                </ThemedText>
+              </>
+            )}
+          </Pressable>
+        </View>
+      ) : null}
     </ThemedView>
   );
 }
@@ -550,6 +633,14 @@ const styles = StyleSheet.create({
     borderTopColor: Colors.light.border,
   },
   actionButton: {
+    height: Spacing.buttonHeight,
+    borderRadius: BorderRadius.sm,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: Spacing.sm,
+  },
+  simulateButton: {
     height: Spacing.buttonHeight,
     borderRadius: BorderRadius.sm,
     flexDirection: "row",

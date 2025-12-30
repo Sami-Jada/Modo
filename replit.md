@@ -108,6 +108,13 @@ Per design guidelines:
 
 ## Recent Changes
 
+### December 30, 2025
+- Fixed service selection on iOS (nested Pressable conflict resolved by using Card's onPress prop)
+- Added job simulation feature for customers to test the full job workflow without real electricians
+  - In JobDetailScreen, customers see a "Simulate" button that advances job through all states
+  - Simulates: BROADCAST → ACCEPTED → EN_ROUTE → ARRIVED → IN_PROGRESS → COMPLETED
+  - Creates mock electrician "Ahmad (Demo)" when job is accepted
+
 ### December 29, 2025
 - Fixed AuthContext.logout to use clearUser() instead of clearAllData() to preserve marketplace data between sessions
 - Added null guards for timeline arrays in getJobs() and getActiveBroadcast() to prevent crashes when reading jobs without initialized timelines
