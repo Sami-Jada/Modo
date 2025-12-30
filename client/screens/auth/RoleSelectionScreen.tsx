@@ -135,8 +135,9 @@ export default function RoleSelectionScreen() {
       <KeyboardAwareScrollViewCompat
         contentContainerStyle={[
           styles.scrollContent,
-          { paddingTop: insets.top + Spacing.xl, paddingBottom: insets.bottom + Spacing.xl },
+          { paddingTop: insets.top + Spacing.xl, paddingBottom: insets.bottom + 300 },
         ]}
+        bottomOffset={100}
       >
         <View style={styles.header}>
           <Image

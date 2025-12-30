@@ -117,8 +117,9 @@ export default function RequestJobScreen() {
       <KeyboardAwareScrollViewCompat
         contentContainerStyle={[
           styles.scrollContent,
-          { paddingBottom: insets.bottom + Spacing.xl },
+          { paddingBottom: insets.bottom + 300 },
         ]}
+        bottomOffset={100}
       >
         <View style={styles.section}>
           <ThemedText style={styles.sectionTitle}>What do you need?</ThemedText>
