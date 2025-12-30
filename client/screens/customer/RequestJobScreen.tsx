@@ -85,7 +85,13 @@ export default function RequestJobScreen() {
       Alert.alert(
         "Request Submitted",
         "We're finding the nearest electrician for you. You'll be notified when one accepts your job.",
-        [{ text: "OK", onPress: () => navigation.goBack() }]
+        [{ 
+          text: "View My Jobs", 
+          onPress: () => {
+            navigation.goBack();
+            navigation.navigate("CustomerMain", { screen: "Activity" } as any);
+          }
+        }]
       );
     } catch (error) {
       Alert.alert("Error", "Failed to submit request. Please try again.");
