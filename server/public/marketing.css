@@ -487,6 +487,35 @@ a:hover {
   }
 }
 
+/* Screen reader only class for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Optional label text */
+.optional {
+  font-weight: normal;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+/* Service list without bullet styling (for semantic ol/li) */
+.service-list {
+  list-style: none;
+}
+
+.steps {
+  list-style: none;
+}
+
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
