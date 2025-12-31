@@ -72,5 +72,27 @@
     "ipAddress": "172.31.91.98",
     "id": "94b90d73-3bd2-4b99-8e10-0afdfac14d79",
     "timestamp": "2025-12-31T12:34:32.023Z"
+  },
+  {
+    "adminId": "137633ce-e0d5-4990-a531-62df3df18d5d",
+    "adminEmail": "admin@kahraba.jo",
+    "action": "login_failed",
+    "entityType": "auth",
+    "entityId": null,
+    "reason": "Invalid password",
+    "ipAddress": "172.31.91.98",
+    "id": "d6385b9b-2939-4a7c-8848-c0b4769db87c",
+    "timestamp": "2025-12-31T12:41:21.549Z"
+  },
+  {
+    "adminId": "137633ce-e0d5-4990-a531-62df3df18d5d",
+    "adminEmail": "admin@kahraba.jo",
+    "action": "login_success",
+    "entityType": "auth",
+    "entityId": "137633ce-e0d5-4990-a531-62df3df18d5d",
+    "reason": "Admin logged in successfully",
+    "ipAddress": "172.31.91.98",
+    "id": "18278063-c40f-4d8d-85b4-ac316e40eab5",
+    "timestamp": "2025-12-31T12:41:26.997Z"
   }
 ]
