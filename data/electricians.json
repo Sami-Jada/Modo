@@ -1,6 +1,7 @@
 [
   {
-    "id": "5d66383d-62b3-417c-9bd5-8573bec44579",
+    "id": "890ceee5-8479-4c56-acfe-20117d4bc1e1",
+    "applicationId": "5d66383d-62b3-417c-9bd5-8573bec44579",
     "name": "Ahmad Al-Masri",
     "email": "ahmad@example.com",
     "phone": "+962791234567",
@@ -14,14 +15,17 @@
       "Licensed Electrician",
       "Safety Certified"
     ],
-    "status": "approved",
-    "submittedAt": "2025-12-28T11:53:58.462Z",
-    "reviewedAt": "2025-12-30T15:05:16.837Z",
-    "reviewedBy": "137633ce-e0d5-4990-a531-62df3df18d5d",
-    "reviewReason": "Sufficient Experience\n"
+    "status": "active",
+    "rating": 0,
+    "totalJobs": 0,
+    "completedJobs": 0,
+    "cancelledJobs": 0,
+    "balance": 0,
+    "createdAt": "2025-12-30T15:05:16.838Z"
   },
   {
-    "id": "3b61e3af-56f8-4f63-9294-d6b8c17a218d",
+    "id": "592c1068-bd84-4c64-a1a6-5973e7d73fa5",
+    "applicationId": "3b61e3af-56f8-4f63-9294-d6b8c17a218d",
     "name": "Mohammad Khalil",
     "email": "mohammad.k@example.com",
     "phone": "+962797654321",
@@ -35,10 +39,12 @@
       "Master Electrician",
       "Industrial Safety"
     ],
-    "status": "approved",
-    "submittedAt": "2025-12-25T11:53:58.462Z",
-    "reviewedAt": "2025-12-30T15:05:23.298Z",
-    "reviewedBy": "137633ce-e0d5-4990-a531-62df3df18d5d",
-    "reviewReason": "Sufficient Experience"
+    "status": "active",
+    "rating": 0,
+    "totalJobs": 0,
+    "completedJobs": 0,
+    "cancelledJobs": 0,
+    "balance": 0,
+    "createdAt": "2025-12-30T15:05:23.298Z"
   }
 ]

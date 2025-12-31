@@ -9,5 +9,57 @@
     "ipAddress": "172.31.68.194",
     "id": "9251b25d-640a-48f1-8232-1aacf909c940",
     "timestamp": "2025-12-30T12:33:48.953Z"
+  },
+  {
+    "adminId": "137633ce-e0d5-4990-a531-62df3df18d5d",
+    "adminEmail": "admin@kahraba.jo",
+    "action": "login_success",
+    "entityType": "auth",
+    "entityId": "137633ce-e0d5-4990-a531-62df3df18d5d",
+    "reason": "Admin logged in successfully",
+    "ipAddress": "172.31.68.130",
+    "id": "9ae832e0-0d87-4fc3-a839-b97b29bb3507",
+    "timestamp": "2025-12-30T15:05:01.003Z"
+  },
+  {
+    "adminId": "137633ce-e0d5-4990-a531-62df3df18d5d",
+    "adminEmail": "admin@kahraba.jo",
+    "action": "application_approved",
+    "entityType": "electrician_application",
+    "entityId": "5d66383d-62b3-417c-9bd5-8573bec44579",
+    "reason": "Sufficient Experience\n",
+    "details": {
+      "applicantName": "Ahmad Al-Masri",
+      "applicantEmail": "ahmad@example.com"
+    },
+    "ipAddress": "172.31.68.130",
+    "id": "f0003187-1640-4dd0-8af5-605b98b37990",
+    "timestamp": "2025-12-30T15:05:16.838Z"
+  },
+  {
+    "adminId": "137633ce-e0d5-4990-a531-62df3df18d5d",
+    "adminEmail": "admin@kahraba.jo",
+    "action": "application_approved",
+    "entityType": "electrician_application",
+    "entityId": "3b61e3af-56f8-4f63-9294-d6b8c17a218d",
+    "reason": "Sufficient Experience",
+    "details": {
+      "applicantName": "Mohammad Khalil",
+      "applicantEmail": "mohammad.k@example.com"
+    },
+    "ipAddress": "172.31.68.130",
+    "id": "d18a14df-6327-455b-b48b-ae06f8cb7eec",
+    "timestamp": "2025-12-30T15:05:23.298Z"
+  },
+  {
+    "adminId": "137633ce-e0d5-4990-a531-62df3df18d5d",
+    "adminEmail": "admin@kahraba.jo",
+    "action": "login_success",
+    "entityType": "auth",
+    "entityId": "137633ce-e0d5-4990-a531-62df3df18d5d",
+    "reason": "Admin logged in successfully",
+    "ipAddress": "172.31.86.194",
+    "id": "772a3345-e324-4e32-b6f7-7a56a6cd3dec",
+    "timestamp": "2025-12-30T20:42:29.513Z"
   }
 ]
