@@ -1,7 +1,7 @@
 [
   {
     "adminId": "137633ce-e0d5-4990-a531-62df3df18d5d",
-    "adminEmail": "admin@kahraba.jo",
+    "adminEmail": "admin@modo.jo",
     "action": "login_success",
     "entityType": "auth",
     "entityId": "137633ce-e0d5-4990-a531-62df3df18d5d",
@@ -12,7 +12,7 @@
   },
   {
     "adminId": "137633ce-e0d5-4990-a531-62df3df18d5d",
-    "adminEmail": "admin@kahraba.jo",
+    "adminEmail": "admin@modo.jo",
     "action": "login_success",
     "entityType": "auth",
     "entityId": "137633ce-e0d5-4990-a531-62df3df18d5d",
@@ -23,7 +23,7 @@
   },
   {
     "adminId": "137633ce-e0d5-4990-a531-62df3df18d5d",
-    "adminEmail": "admin@kahraba.jo",
+    "adminEmail": "admin@modo.jo",
     "action": "application_approved",
     "entityType": "electrician_application",
     "entityId": "5d66383d-62b3-417c-9bd5-8573bec44579",
@@ -38,7 +38,7 @@
   },
   {
     "adminId": "137633ce-e0d5-4990-a531-62df3df18d5d",
-    "adminEmail": "admin@kahraba.jo",
+    "adminEmail": "admin@modo.jo",
     "action": "application_approved",
     "entityType": "electrician_application",
     "entityId": "3b61e3af-56f8-4f63-9294-d6b8c17a218d",
@@ -53,7 +53,7 @@
   },
   {
     "adminId": "137633ce-e0d5-4990-a531-62df3df18d5d",
-    "adminEmail": "admin@kahraba.jo",
+    "adminEmail": "admin@modo.jo",
     "action": "login_success",
     "entityType": "auth",
     "entityId": "137633ce-e0d5-4990-a531-62df3df18d5d",
@@ -64,7 +64,7 @@
   },
   {
     "adminId": "137633ce-e0d5-4990-a531-62df3df18d5d",
-    "adminEmail": "admin@kahraba.jo",
+    "adminEmail": "admin@modo.jo",
     "action": "login_success",
     "entityType": "auth",
     "entityId": "137633ce-e0d5-4990-a531-62df3df18d5d",
@@ -75,7 +75,7 @@
   },
   {
     "adminId": "137633ce-e0d5-4990-a531-62df3df18d5d",
-    "adminEmail": "admin@kahraba.jo",
+    "adminEmail": "admin@modo.jo",
     "action": "login_failed",
     "entityType": "auth",
     "entityId": null,
@@ -86,7 +86,7 @@
   },
   {
     "adminId": "137633ce-e0d5-4990-a531-62df3df18d5d",
-    "adminEmail": "admin@kahraba.jo",
+    "adminEmail": "admin@modo.jo",
     "action": "login_success",
     "entityType": "auth",
     "entityId": "137633ce-e0d5-4990-a531-62df3df18d5d",
@@ -94,5 +94,38 @@
     "ipAddress": "172.31.91.98",
     "id": "18278063-c40f-4d8d-85b4-ac316e40eab5",
     "timestamp": "2025-12-31T12:41:26.997Z"
+  },
+  {
+    "adminId": "unknown",
+    "adminEmail": "admin@kahraba.jo",
+    "action": "login_failed",
+    "entityType": "auth",
+    "entityId": null,
+    "reason": "Invalid credentials",
+    "ipAddress": "172.31.91.98",
+    "id": "9de61b8d-f996-403c-ad49-d8ef9f2a787e",
+    "timestamp": "2025-12-31T13:09:52.295Z"
+  },
+  {
+    "adminId": "unknown",
+    "adminEmail": "admin@kahraba.jo",
+    "action": "login_failed",
+    "entityType": "auth",
+    "entityId": null,
+    "reason": "Invalid credentials",
+    "ipAddress": "172.31.91.98",
+    "id": "330f16a0-0322-4e77-a49f-ac9455a19843",
+    "timestamp": "2025-12-31T13:09:56.335Z"
+  },
+  {
+    "adminId": "unknown",
+    "adminEmail": "admin@modo.com",
+    "action": "login_failed",
+    "entityType": "auth",
+    "entityId": null,
+    "reason": "Invalid credentials",
+    "ipAddress": "172.31.91.98",
+    "id": "6efb01a6-2fee-4c10-b147-cb83ae082713",
+    "timestamp": "2025-12-31T13:10:03.146Z"
   }
 ]

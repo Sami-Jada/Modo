@@ -51,7 +51,7 @@ export default function CustomerHomeScreen() {
               source={require("../../../assets/images/icon.png")}
               style={styles.headerLogo}
             />
-            <ThemedText style={styles.headerTitle}>Kahraba</ThemedText>
+            <ThemedText style={styles.headerTitle}>Modo</ThemedText>
           </View>
           <Pressable
             style={({ pressed }) => [
@@ -74,7 +74,7 @@ export default function CustomerHomeScreen() {
         </Card>
 
         <View style={styles.section}>
-          <ThemedText style={styles.sectionTitle}>Why Choose Kahraba</ThemedText>
+          <ThemedText style={styles.sectionTitle}>Why Choose Modo</ThemedText>
           {features.map((feature, index) => (
             <Card key={index} style={styles.featureCard}>
               <View style={[styles.featureIcon, { backgroundColor: theme.backgroundSecondary }]}>

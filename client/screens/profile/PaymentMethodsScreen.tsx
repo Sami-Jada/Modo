@@ -29,7 +29,7 @@ export default function PaymentMethodsScreen() {
           </View>
           <ThemedText style={styles.title}>Payment Methods</ThemedText>
           <ThemedText style={[styles.description, { color: theme.textSecondary }]}>
-            Payment integration will be available once Kahraba is officially launched in Jordan. For now, all services are paid in cash directly to the electrician.
+            Payment integration will be available once Modo is officially launched in Jordan. For now, all services are paid in cash directly to the electrician.
           </ThemedText>
         </Card>
 

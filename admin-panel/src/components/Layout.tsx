@@ -41,7 +41,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <aside className={styles.sidebar}>
         <div className={styles.logo}>
           <Zap size={24} />
-          <span>Kahraba Admin</span>
+          <span>Modo Admin</span>
         </div>
         
         <nav className={styles.nav}>

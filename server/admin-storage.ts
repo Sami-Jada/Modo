@@ -60,7 +60,7 @@ class AdminStorage {
       const passwordHash = await bcrypt.hash("admin123", 10);
       const defaultAdmin: AdminUser = {
         id: randomUUID(),
-        email: "admin@kahraba.jo",
+        email: "admin@modo.jo",
         passwordHash,
         name: "System Admin",
         role: "superadmin",
@@ -68,7 +68,7 @@ class AdminStorage {
         lastLoginAt: null,
       };
       this.setAdminUsers([defaultAdmin]);
-      console.log("Default admin created: admin@kahraba.jo / admin123");
+      console.log("Default admin created: admin@modo.jo / admin123");
     }
   }
 

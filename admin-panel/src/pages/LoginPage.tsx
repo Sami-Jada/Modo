@@ -38,7 +38,7 @@ export default function LoginPage() {
       <div className={styles.card}>
         <div className={styles.logo}>
           <Zap size={32} />
-          <h1>Kahraba Admin</h1>
+          <h1>Modo Admin</h1>
         </div>
         
         <form onSubmit={handleSubmit} className={styles.form}>
@@ -51,7 +51,7 @@ export default function LoginPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="admin@kahraba.jo"
+              placeholder="admin@modo.jo"
               required
             />
           </div>
@@ -74,7 +74,7 @@ export default function LoginPage() {
         </form>
         
         <p className={styles.hint}>
-          Default: admin@kahraba.jo / admin123
+          Default: admin@modo.jo / admin123
         </p>
       </div>
     </div>

@@ -1,8 +1,8 @@
-# Kahraba - Home Services Marketplace
+# Modo - Home Services Marketplace
 
 ## Overview
 
-Kahraba is a mobile-first home services marketplace for Jordan, initially focused on electricians. The platform connects homeowners with verified electricians through a curated matching system rather than customer selection.
+Modo is a mobile-first home services marketplace for Jordan, initially focused on electricians. The platform connects homeowners with verified electricians through a curated matching system rather than customer selection.
 
 The app uses a dual-interface approach:
 - **Customer App**: Request electrical services, track jobs, manage payments
@@ -110,7 +110,7 @@ Per design guidelines:
 
 A comprehensive web-based admin panel for internal operations management:
 - **Access**: /admin endpoint on the Express server (port 5000)
-- **Default Credentials**: admin@kahraba.jo / admin123
+- **Default Credentials**: admin@modo.jo / admin123
 - **Technology**: React + Vite + TanStack React Query, served as static files
 
 **Features**:

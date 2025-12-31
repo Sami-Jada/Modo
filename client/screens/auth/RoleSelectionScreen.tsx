@@ -29,7 +29,7 @@ export default function RoleSelectionScreen() {
 
   const handleContinue = async () => {
     if (!selectedRole) {
-      Alert.alert("Select Role", "Please select how you want to use Kahraba.");
+      Alert.alert("Select Role", "Please select how you want to use Modo.");
       return;
     }
     if (!name.trim()) {
@@ -144,14 +144,14 @@ export default function RoleSelectionScreen() {
             source={require("../../../assets/images/icon.png")}
             style={styles.logo}
           />
-          <ThemedText style={styles.title}>Kahraba</ThemedText>
+          <ThemedText style={styles.title}>Modo</ThemedText>
           <ThemedText style={[styles.subtitle, { color: theme.textSecondary }]}>
             Home services at your fingertips
           </ThemedText>
         </View>
 
         <View style={styles.section}>
-          <ThemedText style={styles.sectionTitle}>How will you use Kahraba?</ThemedText>
+          <ThemedText style={styles.sectionTitle}>How will you use Modo?</ThemedText>
 
           <RoleCard
             role="customer"

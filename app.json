@@ -1,16 +1,16 @@
 {
   "expo": {
-    "name": "Kahraba",
-    "slug": "kahraba",
+    "name": "Modo",
+    "slug": "modo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "kahraba",
+    "scheme": "modo",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.kahraba.app"
+      "bundleIdentifier": "com.modo.app"
     },
     "android": {
       "adaptiveIcon": {
@@ -21,7 +21,7 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.kahraba.app"
+      "package": "com.modo.app"
     },
     "web": {
       "output": "single",

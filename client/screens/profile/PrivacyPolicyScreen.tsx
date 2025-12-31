@@ -72,7 +72,7 @@ export default function PrivacyPolicyScreen() {
 
           <ThemedText style={styles.sectionTitle}>10. Contact Us</ThemedText>
           <ThemedText style={[styles.paragraph, { color: theme.textSecondary }]}>
-            For privacy-related questions or to exercise your data rights, contact us at privacy@kahraba.jo or through the Help & Support section of the app.
+            For privacy-related questions or to exercise your data rights, contact us at privacy@modo.jo or through the Help & Support section of the app.
           </ThemedText>
         </Card>
       </ScrollView>

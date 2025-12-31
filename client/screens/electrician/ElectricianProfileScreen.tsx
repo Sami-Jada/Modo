@@ -37,7 +37,7 @@ export default function ElectricianProfileScreen() {
     { icon: "credit-card" as const, title: "Payment Settings", onPress: () => {} },
     { icon: "file-text" as const, title: "Documents & Verification", onPress: () => {} },
     { icon: "help-circle" as const, title: "Help & Support", onPress: () => {} },
-    { icon: "info" as const, title: "About Kahraba", onPress: () => {} },
+    { icon: "info" as const, title: "About Modo", onPress: () => {} },
   ];
 
   const verificationStatus = user?.isVerified ? "Verified" : "Pending Verification";

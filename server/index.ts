@@ -64,7 +64,7 @@ function setupBodyParsing(app: express.Application) {
 }
 
 function setupSession(app: express.Application) {
-  const sessionSecret = process.env.SESSION_SECRET || "kahraba-admin-dev-secret";
+  const sessionSecret = process.env.SESSION_SECRET || "modo-admin-dev-secret";
   app.use(
     session({
       secret: sessionSecret,
@@ -263,7 +263,7 @@ function setupErrorHandler(app: express.Application) {
       <!DOCTYPE html>
       <html>
       <head>
-        <title>Kahraba Admin</title>
+        <title>Modo Admin</title>
         <style>
           body { font-family: system-ui; max-width: 600px; margin: 100px auto; padding: 20px; }
           h1 { color: #333; }
@@ -272,9 +272,9 @@ function setupErrorHandler(app: express.Application) {
         </style>
       </head>
       <body>
-        <h1>Kahraba Admin Panel</h1>
+        <h1>Modo Admin Panel</h1>
         <p>Admin panel is being set up. API is available at <code>/api/admin</code></p>
-        <p>Default login: <code>admin@kahraba.jo</code> / <code>admin123</code></p>
+        <p>Default login: <code>admin@modo.jo</code> / <code>admin123</code></p>
       </body>
       </html>
     `);

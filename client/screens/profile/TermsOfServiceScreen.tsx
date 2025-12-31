@@ -27,12 +27,12 @@ export default function TermsOfServiceScreen() {
 
           <ThemedText style={styles.sectionTitle}>1. Acceptance of Terms</ThemedText>
           <ThemedText style={[styles.paragraph, { color: theme.textSecondary }]}>
-            By accessing or using the Kahraba application, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.
+            By accessing or using the Modo application, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.
           </ThemedText>
 
           <ThemedText style={styles.sectionTitle}>2. Service Description</ThemedText>
           <ThemedText style={[styles.paragraph, { color: theme.textSecondary }]}>
-            Kahraba is a platform that connects customers with licensed electricians in Jordan. We facilitate the matching process but are not responsible for the actual electrical work performed.
+            Modo is a platform that connects customers with licensed electricians in Jordan. We facilitate the matching process but are not responsible for the actual electrical work performed.
           </ThemedText>
 
           <ThemedText style={styles.sectionTitle}>3. User Responsibilities</ThemedText>
@@ -52,7 +52,7 @@ export default function TermsOfServiceScreen() {
 
           <ThemedText style={styles.sectionTitle}>6. Liability</ThemedText>
           <ThemedText style={[styles.paragraph, { color: theme.textSecondary }]}>
-            Kahraba is not liable for any damages arising from electrical work performed by electricians on our platform. All electricians are independently licensed and insured.
+            Modo is not liable for any damages arising from electrical work performed by electricians on our platform. All electricians are independently licensed and insured.
           </ThemedText>
 
           <ThemedText style={styles.sectionTitle}>7. Dispute Resolution</ThemedText>
@@ -67,7 +67,7 @@ export default function TermsOfServiceScreen() {
 
           <ThemedText style={styles.sectionTitle}>9. Contact</ThemedText>
           <ThemedText style={[styles.paragraph, { color: theme.textSecondary }]}>
-            For questions about these Terms of Service, please contact us at legal@kahraba.jo or through the Help & Support section of the app.
+            For questions about these Terms of Service, please contact us at legal@modo.jo or through the Help & Support section of the app.
           </ThemedText>
         </Card>
       </ScrollView>

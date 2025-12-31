@@ -2,10 +2,10 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import type { User, Job, Transaction, UserRole, ElectricianStats } from "@/types";
 
 const STORAGE_KEYS = {
-  USER: "@kahraba_user",
-  JOBS: "@kahraba_jobs",
-  TRANSACTIONS: "@kahraba_transactions",
-  ACTIVE_BROADCAST: "@kahraba_active_broadcast",
+  USER: "@modo_user",
+  JOBS: "@modo_jobs",
+  TRANSACTIONS: "@modo_transactions",
+  ACTIVE_BROADCAST: "@modo_active_broadcast",
 };
 
 export async function getUser(): Promise<User | null> {

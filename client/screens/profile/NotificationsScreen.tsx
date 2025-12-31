@@ -95,7 +95,7 @@ export default function NotificationsScreen() {
         </Card>
 
         <ThemedText style={[styles.note, { color: theme.textSecondary }]}>
-          Push notifications require enabling notifications for Kahraba in your device settings.
+          Push notifications require enabling notifications for Modo in your device settings.
         </ThemedText>
       </ScrollView>
     </ThemedView>

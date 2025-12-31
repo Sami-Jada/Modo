@@ -48,7 +48,7 @@ export default function HelpSupportScreen() {
     if (method === "phone") {
       Linking.openURL("tel:+962791234567");
     } else if (method === "email") {
-      Linking.openURL("mailto:support@kahraba.jo");
+      Linking.openURL("mailto:support@modo.jo");
     } else if (method === "whatsapp") {
       Linking.openURL("https://wa.me/962791234567");
     }
