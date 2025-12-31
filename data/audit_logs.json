@@ -127,5 +127,16 @@
     "ipAddress": "172.31.91.98",
     "id": "6efb01a6-2fee-4c10-b147-cb83ae082713",
     "timestamp": "2025-12-31T13:10:03.146Z"
+  },
+  {
+    "adminId": "137633ce-e0d5-4990-a531-62df3df18d5d",
+    "adminEmail": "admin@modo.jo",
+    "action": "login_success",
+    "entityType": "auth",
+    "entityId": "137633ce-e0d5-4990-a531-62df3df18d5d",
+    "reason": "Admin logged in successfully",
+    "ipAddress": "172.31.91.98",
+    "id": "33478d6b-4fa3-41e7-9ccf-befcc6dfab96",
+    "timestamp": "2025-12-31T13:17:38.694Z"
   }
 ]
