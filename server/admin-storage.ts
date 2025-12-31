@@ -14,6 +14,7 @@ import type {
   BalanceTransaction,
   Config,
   TrustMetrics,
+  MarketingLead,
 } from "@shared/admin-types";
 
 const DATA_DIR = path.resolve(process.cwd(), "data");
@@ -616,6 +617,51 @@ class AdminStorage {
 
     this.setCustomers(demoCustomers);
     console.log("Demo data seeded");
+  }
+
+  private readMarketingLeads(): MarketingLead[] {
+    return readJsonFile<MarketingLead[]>("marketing_leads.json", []);
+  }
+
+  private writeMarketingLeads(leads: MarketingLead[]): void {
+    writeJsonFile("marketing_leads.json", leads);
+  }
+
+  async createMarketingLead(lead: MarketingLead): Promise<MarketingLead> {
+    const leads = this.readMarketingLeads();
+    leads.push(lead);
+    this.writeMarketingLeads(leads);
+    return lead;
+  }
+
+  async getMarketingLeads(status?: string): Promise<MarketingLead[]> {
+    let leads = this.readMarketingLeads();
+    if (status) {
+      leads = leads.filter((l) => l.status === status);
+    }
+    return leads.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  }
+
+  async getMarketingLead(id: string): Promise<MarketingLead | undefined> {
+    const leads = this.readMarketingLeads();
+    return leads.find((l) => l.id === id);
+  }
+
+  async updateMarketingLeadStatus(
+    id: string,
+    status: "pending" | "contacted" | "converted" | "closed",
+    notes?: string
+  ): Promise<MarketingLead | undefined> {
+    const leads = this.readMarketingLeads();
+    const index = leads.findIndex((l) => l.id === id);
+    if (index === -1) return undefined;
+    leads[index].status = status;
+    leads[index].updatedAt = new Date().toISOString();
+    if (notes) {
+      leads[index].notes = notes;
+    }
+    this.writeMarketingLeads(leads);
+    return leads[index];
   }
 }
 

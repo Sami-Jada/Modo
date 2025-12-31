@@ -1,0 +1,14 @@
+[
+  {
+    "id": "lead_1767184372008_h25dqpsrh",
+    "source": "marketing_site",
+    "status": "pending",
+    "customerName": "Test User",
+    "customerPhone": "+962791234567",
+    "customerEmail": "test@example.com",
+    "serviceAddress": "Amman, Jordan",
+    "issueDescription": "My electrical outlet is not working",
+    "createdAt": "2025-12-31T12:32:52.008Z",
+    "updatedAt": "2025-12-31T12:32:52.008Z"
+  }
+]

@@ -209,3 +209,20 @@ export const TrustMetricsSchema = z.object({
 });
 
 export type TrustMetrics = z.infer<typeof TrustMetricsSchema>;
+
+export const MarketingLeadSchema = z.object({
+  id: z.string(),
+  source: z.literal("marketing_site"),
+  status: z.enum(["pending", "contacted", "converted", "closed"]),
+  customerName: z.string(),
+  customerPhone: z.string(),
+  customerEmail: z.string().nullable(),
+  serviceAddress: z.string(),
+  issueDescription: z.string(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+  notes: z.string().optional(),
+  assignedTo: z.string().nullable().optional(),
+});
+
+export type MarketingLead = z.infer<typeof MarketingLeadSchema>;

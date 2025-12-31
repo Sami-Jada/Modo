@@ -8,6 +8,7 @@ import {
   Briefcase,
   AlertTriangle,
   UserCircle,
+  MessageSquare,
   Settings,
   FileText,
   LogOut,
@@ -21,6 +22,7 @@ const navItems = [
   { path: '/jobs', icon: Briefcase, label: 'Jobs' },
   { path: '/disputes', icon: AlertTriangle, label: 'Disputes' },
   { path: '/customers', icon: UserCircle, label: 'Customers' },
+  { path: '/leads', icon: MessageSquare, label: 'Marketing Leads' },
   { path: '/config', icon: Settings, label: 'Config' },
   { path: '/audit-log', icon: FileText, label: 'Audit Log' },
 ]

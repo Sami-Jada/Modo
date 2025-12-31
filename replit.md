@@ -120,8 +120,17 @@ A comprehensive web-based admin panel for internal operations management:
 - Job timeline view showing full state history
 - Dispute management with status tracking and resolution
 - Customer management with balance and credit adjustments
+- Marketing leads management from website contact form
 - Configuration management with version history
 - Complete audit log tracking all admin actions
+
+### Marketing Website
+
+Public-facing marketing pages served at `/marketing/` to capture lead requests:
+- **Access**: `/marketing/` endpoint on the Express server (port 5000)
+- **Pages**: Home page with contact form, What We Do page
+- **Form Fields**: name, phone (required), email (optional), address, issue description
+- **Storage**: JSON file-based (data/marketing_leads.json), integrated with admin panel
 
 **Admin Panel Architecture**:
 - Frontend: `/admin-panel/` - React SPA with CSS modules
@@ -130,6 +139,25 @@ A comprehensive web-based admin panel for internal operations management:
 - Shared types: `/shared/admin-types.ts` - Zod schemas for validation
 
 ## Recent Changes
+
+### December 31, 2025
+- **Added public marketing website** at `/marketing/` endpoint:
+  - Home page with hero section, features grid, and contact form
+  - "What We Do" page with service descriptions
+  - Responsive design with dark mode support
+  - Contact form submits leads to backend storage
+- **Marketing leads management** in admin panel:
+  - New "Marketing Leads" navigation item in admin sidebar
+  - Leads table with status filtering (pending/contacted/converted/closed)
+  - Lead detail modal with contact info and issue description
+  - Status update workflow with notes
+- **Backend support**:
+  - `/marketing/contact` POST endpoint for form submissions
+  - `/api/admin/leads` GET endpoint (authenticated)
+  - `/api/admin/leads/:id/status` PATCH endpoint for status updates
+  - MarketingLead type in shared/admin-types.ts
+- Created `feature/marketing-site` branch on GitHub for this work
+- GitHub integration script: `scripts/create-branch.ts`
 
 ### December 30, 2025
 - **Built complete admin panel** with dashboard, application review, electrician/job/dispute/customer management

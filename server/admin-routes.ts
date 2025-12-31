@@ -479,4 +479,47 @@ router.get("/metrics", requireAuth, async (req: Request, res: Response) => {
   res.json(metrics);
 });
 
+router.get("/leads", requireAuth, async (req: Request, res: Response) => {
+  const status = req.query.status as string | undefined;
+  const leads = await adminStorage.getMarketingLeads(status);
+  res.json(leads);
+});
+
+router.get("/leads/:id", requireAuth, async (req: Request, res: Response) => {
+  const lead = await adminStorage.getMarketingLead(req.params.id);
+  if (!lead) {
+    return res.status(404).json({ error: "Lead not found" });
+  }
+  res.json(lead);
+});
+
+router.patch("/leads/:id/status", requireAuth, async (req: Request, res: Response) => {
+  const schema = z.object({
+    status: z.enum(["pending", "contacted", "converted", "closed"]),
+    notes: z.string().optional(),
+  });
+
+  const result = schema.safeParse(req.body);
+  if (!result.success) {
+    return res.status(400).json({ error: result.error.errors[0].message });
+  }
+
+  const lead = await adminStorage.updateMarketingLeadStatus(
+    req.params.id,
+    result.data.status,
+    result.data.notes
+  );
+
+  if (!lead) {
+    return res.status(404).json({ error: "Lead not found" });
+  }
+
+  await logAction(req, `lead_status_changed_to_${result.data.status}`, "customer", req.params.id, result.data.notes || "Status updated", {
+    leadId: req.params.id,
+    newStatus: result.data.status,
+  });
+
+  res.json(lead);
+});
+
 export default router;

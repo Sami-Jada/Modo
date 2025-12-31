@@ -8,6 +8,7 @@ import ElectriciansPage from './pages/ElectriciansPage'
 import JobsPage from './pages/JobsPage'
 import DisputesPage from './pages/DisputesPage'
 import CustomersPage from './pages/CustomersPage'
+import LeadsPage from './pages/LeadsPage'
 import ConfigPage from './pages/ConfigPage'
 import AuditLogPage from './pages/AuditLogPage'
 
@@ -45,6 +46,7 @@ export default function App() {
                 <Route path="/jobs" element={<JobsPage />} />
                 <Route path="/disputes" element={<DisputesPage />} />
                 <Route path="/customers" element={<CustomersPage />} />
+                <Route path="/leads" element={<LeadsPage />} />
                 <Route path="/config" element={<ConfigPage />} />
                 <Route path="/audit-log" element={<AuditLogPage />} />
               </Routes>

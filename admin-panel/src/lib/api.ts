@@ -125,6 +125,16 @@ export const api = {
   metrics: {
     get: () => request<Metrics>('/metrics'),
   },
+  
+  leads: {
+    list: (status?: string) => request<MarketingLead[]>(`/leads${status ? `?status=${status}` : ''}`),
+    get: (id: string) => request<MarketingLead>(`/leads/${id}`),
+    updateStatus: (id: string, status: string, notes?: string) =>
+      request<MarketingLead>(`/leads/${id}/status`, {
+        method: 'PATCH',
+        body: JSON.stringify({ status, notes }),
+      }),
+  },
 }
 
 export interface Application {
@@ -269,4 +279,19 @@ export interface Metrics {
   openDisputes: number
   totalRevenue: number
   averageJobValue: number
+}
+
+export interface MarketingLead {
+  id: string
+  source: 'marketing_site'
+  status: 'pending' | 'contacted' | 'converted' | 'closed'
+  customerName: string
+  customerPhone: string
+  customerEmail: string | null
+  serviceAddress: string
+  issueDescription: string
+  createdAt: string
+  updatedAt: string
+  notes?: string
+  assignedTo?: string | null
 }

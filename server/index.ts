@@ -3,6 +3,7 @@ import type { Request, Response, NextFunction } from "express";
 import session from "express-session";
 import { registerRoutes } from "./routes";
 import adminRoutes from "./admin-routes";
+import marketingRoutes from "./marketing-routes";
 import { adminStorage } from "./admin-storage";
 import * as fs from "fs";
 import * as path from "path";
@@ -245,6 +246,7 @@ function setupErrorHandler(app: express.Application) {
   await adminStorage.seedDemoData();
 
   app.use("/api/admin", adminRoutes);
+  app.use("/marketing", marketingRoutes);
 
   app.use("/admin", express.static(path.resolve(process.cwd(), "admin-panel", "dist")));
   app.get("/admin/*", (req: Request, res: Response) => {
