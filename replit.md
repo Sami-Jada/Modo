@@ -110,7 +110,8 @@ Per design guidelines:
 
 A comprehensive web-based admin panel for internal operations management:
 - **Access**: /admin endpoint on the Express server (port 5000)
-- **Default Credentials**: admin@modo.jo / admin123
+- **Security**: HTTP Basic Auth protection (username: "admin", password from ADMIN_BASIC_AUTH_PASSWORD secret)
+- **Default Credentials**: admin@modo.jo / admin123 (for application-level login after Basic Auth)
 - **Technology**: React + Vite + TanStack React Query, served as static files
 
 **Features**:
@@ -130,7 +131,7 @@ Public-facing marketing pages served at `/marketing/` to capture lead requests:
 - **Access**: `/marketing/` endpoint on the Express server (port 5000)
 - **Pages**: Home page with contact form, What We Do page
 - **Form Fields**: name, phone (required), email (optional), address, issue description
-- **Storage**: JSON file-based (data/marketing_leads.json), integrated with admin panel
+- **Storage**: PostgreSQL database (marketing_leads table), integrated with admin panel
 
 **Admin Panel Architecture**:
 - Frontend: `/admin-panel/` - React SPA with CSS modules
@@ -139,6 +140,20 @@ Public-facing marketing pages served at `/marketing/` to capture lead requests:
 - Shared types: `/shared/admin-types.ts` - Zod schemas for validation
 
 ## Recent Changes
+
+### January 2, 2026
+- **Added HTTP Basic Auth protection** for admin panel:
+  - All `/admin/*` and `/api/admin/*` routes require HTTP Basic Auth before access
+  - Username: "admin", password from `ADMIN_BASIC_AUTH_PASSWORD` secret
+  - Added `basicAuthMiddleware` in `server/index.ts`
+- **Fixed TypeScript type errors** in `server/admin-storage.ts`:
+  - Fixed `source` field type casting for MarketingLead
+  - Fixed nullable field handling (email, address, notes)
+- **Fixed session cookie configuration** for cross-origin requests:
+  - Added `sameSite: "lax"` to session cookie config
+- **Marketing leads now stored in PostgreSQL** instead of JSON file:
+  - Uses `marketing_leads` table defined in `shared/schema.ts`
+  - Full integration with admin panel leads management
 
 ### December 31, 2025
 - **Added public marketing website** at `/marketing/` endpoint:
