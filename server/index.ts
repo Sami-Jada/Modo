@@ -238,7 +238,9 @@ function basicAuthMiddleware(req: Request, res: Response, next: NextFunction) {
   
   const base64Credentials = authHeader.split(' ')[1];
   const credentials = Buffer.from(base64Credentials, 'base64').toString('utf8');
-  const [username, password] = credentials.split(':');
+  const colonIndex = credentials.indexOf(':');
+  const username = credentials.substring(0, colonIndex);
+  const password = credentials.substring(colonIndex + 1);
   
   if (username === 'admin' && password === basicAuthPassword) {
     return next();
