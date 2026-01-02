@@ -257,7 +257,7 @@ function basicAuthMiddleware(req: Request, res: Response, next: NextFunction) {
   await adminStorage.initializeDefaultAdmin();
   await adminStorage.seedDemoData();
 
-  app.use("/api/admin", basicAuthMiddleware, adminRoutes);
+  app.use("/api/admin", adminRoutes);
   app.use("/marketing", marketingRoutes);
 
   app.use("/admin", basicAuthMiddleware, express.static(path.resolve(process.cwd(), "admin-panel", "dist")));
