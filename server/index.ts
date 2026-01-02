@@ -73,6 +73,7 @@ function setupSession(app: express.Application) {
       cookie: {
         secure: process.env.NODE_ENV === "production",
         httpOnly: true,
+        sameSite: "lax",
         maxAge: 24 * 60 * 60 * 1000,
       },
     })
@@ -222,6 +223,31 @@ function setupErrorHandler(app: express.Application) {
   });
 }
 
+function basicAuthMiddleware(req: Request, res: Response, next: NextFunction) {
+  const authHeader = req.headers.authorization;
+  const basicAuthPassword = process.env.ADMIN_BASIC_AUTH_PASSWORD;
+  
+  if (!basicAuthPassword) {
+    return next();
+  }
+  
+  if (!authHeader || !authHeader.startsWith('Basic ')) {
+    res.setHeader('WWW-Authenticate', 'Basic realm="Admin Panel"');
+    return res.status(401).send('Authentication required');
+  }
+  
+  const base64Credentials = authHeader.split(' ')[1];
+  const credentials = Buffer.from(base64Credentials, 'base64').toString('utf8');
+  const [username, password] = credentials.split(':');
+  
+  if (username === 'admin' && password === basicAuthPassword) {
+    return next();
+  }
+  
+  res.setHeader('WWW-Authenticate', 'Basic realm="Admin Panel"');
+  return res.status(401).send('Invalid credentials');
+}
+
 (async () => {
   setupCors(app);
   setupBodyParsing(app);
@@ -231,11 +257,11 @@ function setupErrorHandler(app: express.Application) {
   await adminStorage.initializeDefaultAdmin();
   await adminStorage.seedDemoData();
 
-  app.use("/api/admin", adminRoutes);
+  app.use("/api/admin", basicAuthMiddleware, adminRoutes);
   app.use("/marketing", marketingRoutes);
 
-  app.use("/admin", express.static(path.resolve(process.cwd(), "admin-panel", "dist")));
-  app.get("/admin/*", (req: Request, res: Response) => {
+  app.use("/admin", basicAuthMiddleware, express.static(path.resolve(process.cwd(), "admin-panel", "dist")));
+  app.get("/admin/*", basicAuthMiddleware, (req: Request, res: Response) => {
     const indexPath = path.resolve(process.cwd(), "admin-panel", "dist", "index.html");
     if (fs.existsSync(indexPath)) {
       res.sendFile(indexPath);

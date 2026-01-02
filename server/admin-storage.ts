@@ -622,7 +622,17 @@ class AdminStorage {
     console.log("Demo data seeded");
   }
 
-  async createMarketingLead(lead: Omit<MarketingLead, "id" | "createdAt" | "updatedAt"> & { id?: string }): Promise<MarketingLead> {
+  async createMarketingLead(lead: {
+    id?: string;
+    source: string;
+    status: string;
+    customerName: string;
+    customerPhone: string;
+    customerEmail?: string | null;
+    serviceAddress?: string | null;
+    issueDescription?: string | null;
+    notes?: string | null;
+  }): Promise<MarketingLead> {
     const result = await db.insert(marketingLeads).values({
       id: lead.id || randomUUID(),
       source: lead.source,
@@ -638,13 +648,13 @@ class AdminStorage {
     const row = result[0];
     return {
       id: row.id,
-      source: row.source,
+      source: row.source as "marketing_site",
       status: row.status as MarketingLead["status"],
       customerName: row.customerName,
       customerPhone: row.customerPhone,
-      customerEmail: row.customerEmail || undefined,
-      serviceAddress: row.serviceAddress || undefined,
-      issueDescription: row.issueDescription || undefined,
+      customerEmail: row.customerEmail ?? null,
+      serviceAddress: row.serviceAddress || "",
+      issueDescription: row.issueDescription || "",
       notes: row.notes || undefined,
       createdAt: row.createdAt.toISOString(),
       updatedAt: row.updatedAt.toISOString(),
@@ -652,21 +662,19 @@ class AdminStorage {
   }
 
   async getMarketingLeads(status?: string): Promise<MarketingLead[]> {
-    let query = db.select().from(marketingLeads).orderBy(desc(marketingLeads.createdAt));
-    
     const rows = status 
       ? await db.select().from(marketingLeads).where(eq(marketingLeads.status, status)).orderBy(desc(marketingLeads.createdAt))
-      : await query;
+      : await db.select().from(marketingLeads).orderBy(desc(marketingLeads.createdAt));
     
     return rows.map((row) => ({
       id: row.id,
-      source: row.source,
+      source: row.source as "marketing_site",
       status: row.status as MarketingLead["status"],
       customerName: row.customerName,
       customerPhone: row.customerPhone,
-      customerEmail: row.customerEmail || undefined,
-      serviceAddress: row.serviceAddress || undefined,
-      issueDescription: row.issueDescription || undefined,
+      customerEmail: row.customerEmail ?? null,
+      serviceAddress: row.serviceAddress || "",
+      issueDescription: row.issueDescription || "",
       notes: row.notes || undefined,
       createdAt: row.createdAt.toISOString(),
       updatedAt: row.updatedAt.toISOString(),
@@ -679,13 +687,13 @@ class AdminStorage {
     const row = rows[0];
     return {
       id: row.id,
-      source: row.source,
+      source: row.source as "marketing_site",
       status: row.status as MarketingLead["status"],
       customerName: row.customerName,
       customerPhone: row.customerPhone,
-      customerEmail: row.customerEmail || undefined,
-      serviceAddress: row.serviceAddress || undefined,
-      issueDescription: row.issueDescription || undefined,
+      customerEmail: row.customerEmail ?? null,
+      serviceAddress: row.serviceAddress || "",
+      issueDescription: row.issueDescription || "",
       notes: row.notes || undefined,
       createdAt: row.createdAt.toISOString(),
       updatedAt: row.updatedAt.toISOString(),
@@ -714,13 +722,13 @@ class AdminStorage {
     const row = result[0];
     return {
       id: row.id,
-      source: row.source,
+      source: row.source as "marketing_site",
       status: row.status as MarketingLead["status"],
       customerName: row.customerName,
       customerPhone: row.customerPhone,
-      customerEmail: row.customerEmail || undefined,
-      serviceAddress: row.serviceAddress || undefined,
-      issueDescription: row.issueDescription || undefined,
+      customerEmail: row.customerEmail ?? null,
+      serviceAddress: row.serviceAddress || "",
+      issueDescription: row.issueDescription || "",
       notes: row.notes || undefined,
       createdAt: row.createdAt.toISOString(),
       updatedAt: row.updatedAt.toISOString(),
