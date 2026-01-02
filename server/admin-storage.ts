@@ -2,6 +2,9 @@ import * as fs from "fs";
 import * as path from "path";
 import { randomUUID } from "crypto";
 import * as bcrypt from "bcrypt";
+import { eq, desc } from "drizzle-orm";
+import { db } from "./db";
+import { marketingLeads } from "@shared/schema";
 import type {
   AdminUser,
   ElectricianApplication,
@@ -619,32 +622,74 @@ class AdminStorage {
     console.log("Demo data seeded");
   }
 
-  private readMarketingLeads(): MarketingLead[] {
-    return readJsonFile<MarketingLead[]>("marketing_leads.json", []);
-  }
-
-  private writeMarketingLeads(leads: MarketingLead[]): void {
-    writeJsonFile("marketing_leads.json", leads);
-  }
-
-  async createMarketingLead(lead: MarketingLead): Promise<MarketingLead> {
-    const leads = this.readMarketingLeads();
-    leads.push(lead);
-    this.writeMarketingLeads(leads);
-    return lead;
+  async createMarketingLead(lead: Omit<MarketingLead, "id" | "createdAt" | "updatedAt"> & { id?: string }): Promise<MarketingLead> {
+    const result = await db.insert(marketingLeads).values({
+      id: lead.id || randomUUID(),
+      source: lead.source,
+      status: lead.status,
+      customerName: lead.customerName,
+      customerPhone: lead.customerPhone,
+      customerEmail: lead.customerEmail || null,
+      serviceAddress: lead.serviceAddress || null,
+      issueDescription: lead.issueDescription || null,
+      notes: lead.notes || null,
+    }).returning();
+    
+    const row = result[0];
+    return {
+      id: row.id,
+      source: row.source,
+      status: row.status as MarketingLead["status"],
+      customerName: row.customerName,
+      customerPhone: row.customerPhone,
+      customerEmail: row.customerEmail || undefined,
+      serviceAddress: row.serviceAddress || undefined,
+      issueDescription: row.issueDescription || undefined,
+      notes: row.notes || undefined,
+      createdAt: row.createdAt.toISOString(),
+      updatedAt: row.updatedAt.toISOString(),
+    };
   }
 
   async getMarketingLeads(status?: string): Promise<MarketingLead[]> {
-    let leads = this.readMarketingLeads();
-    if (status) {
-      leads = leads.filter((l) => l.status === status);
-    }
-    return leads.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    let query = db.select().from(marketingLeads).orderBy(desc(marketingLeads.createdAt));
+    
+    const rows = status 
+      ? await db.select().from(marketingLeads).where(eq(marketingLeads.status, status)).orderBy(desc(marketingLeads.createdAt))
+      : await query;
+    
+    return rows.map((row) => ({
+      id: row.id,
+      source: row.source,
+      status: row.status as MarketingLead["status"],
+      customerName: row.customerName,
+      customerPhone: row.customerPhone,
+      customerEmail: row.customerEmail || undefined,
+      serviceAddress: row.serviceAddress || undefined,
+      issueDescription: row.issueDescription || undefined,
+      notes: row.notes || undefined,
+      createdAt: row.createdAt.toISOString(),
+      updatedAt: row.updatedAt.toISOString(),
+    }));
   }
 
   async getMarketingLead(id: string): Promise<MarketingLead | undefined> {
-    const leads = this.readMarketingLeads();
-    return leads.find((l) => l.id === id);
+    const rows = await db.select().from(marketingLeads).where(eq(marketingLeads.id, id));
+    if (rows.length === 0) return undefined;
+    const row = rows[0];
+    return {
+      id: row.id,
+      source: row.source,
+      status: row.status as MarketingLead["status"],
+      customerName: row.customerName,
+      customerPhone: row.customerPhone,
+      customerEmail: row.customerEmail || undefined,
+      serviceAddress: row.serviceAddress || undefined,
+      issueDescription: row.issueDescription || undefined,
+      notes: row.notes || undefined,
+      createdAt: row.createdAt.toISOString(),
+      updatedAt: row.updatedAt.toISOString(),
+    };
   }
 
   async updateMarketingLeadStatus(
@@ -652,16 +697,34 @@ class AdminStorage {
     status: "pending" | "contacted" | "converted" | "closed",
     notes?: string
   ): Promise<MarketingLead | undefined> {
-    const leads = this.readMarketingLeads();
-    const index = leads.findIndex((l) => l.id === id);
-    if (index === -1) return undefined;
-    leads[index].status = status;
-    leads[index].updatedAt = new Date().toISOString();
+    const updateData: { status: string; updatedAt: Date; notes?: string } = {
+      status,
+      updatedAt: new Date(),
+    };
     if (notes) {
-      leads[index].notes = notes;
+      updateData.notes = notes;
     }
-    this.writeMarketingLeads(leads);
-    return leads[index];
+    
+    const result = await db.update(marketingLeads)
+      .set(updateData)
+      .where(eq(marketingLeads.id, id))
+      .returning();
+    
+    if (result.length === 0) return undefined;
+    const row = result[0];
+    return {
+      id: row.id,
+      source: row.source,
+      status: row.status as MarketingLead["status"],
+      customerName: row.customerName,
+      customerPhone: row.customerPhone,
+      customerEmail: row.customerEmail || undefined,
+      serviceAddress: row.serviceAddress || undefined,
+      issueDescription: row.issueDescription || undefined,
+      notes: row.notes || undefined,
+      createdAt: row.createdAt.toISOString(),
+      updatedAt: row.updatedAt.toISOString(),
+    };
   }
 }
 
