@@ -11,6 +11,9 @@ import * as path from "path";
 const app = express();
 const log = console.log;
 
+// Trust first proxy (Replit) - required for secure cookies to work behind reverse proxy
+app.set('trust proxy', 1);
+
 declare module "http" {
   interface IncomingMessage {
     rawBody: unknown;
