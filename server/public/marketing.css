@@ -534,12 +534,6 @@ a:hover {
   align-items: center;
 }
 
-.logo-new {
-  font-size: 24px;
-  font-weight: 700;
-  color: #F59E0B;
-}
-
 .header-actions {
   display: flex;
   align-items: center;
@@ -1055,7 +1049,19 @@ a:hover {
 .header-left {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 24px;
+}
+
+.logo-new {
+  font-size: 24px;
+  font-weight: 700;
+  color: #F59E0B;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo-new:hover {
+  text-decoration: none;
 }
 
 .nav-desktop {
@@ -1469,8 +1475,10 @@ a:hover {
   flex-direction: row-reverse;
 }
 
+/* RTL: Keep navigation order the same (Home always first from reading direction) */
 [dir="rtl"] .nav-desktop {
-  flex-direction: row-reverse;
+  /* Don't reverse - keep Home first from right in RTL */
+  flex-direction: row;
 }
 
 [dir="rtl"] .nav-mobile {
