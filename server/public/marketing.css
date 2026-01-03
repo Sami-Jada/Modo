@@ -1052,6 +1052,12 @@ a:hover {
   align-items: center;
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
 .nav-desktop {
   display: flex;
   align-items: center;
@@ -1385,6 +1391,10 @@ a:hover {
     flex-wrap: wrap;
     gap: 16px;
     position: relative;
+  }
+
+  .header-left {
+    gap: 16px;
   }
 
   .nav-desktop {
