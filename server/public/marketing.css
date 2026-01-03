@@ -538,6 +538,7 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-shrink: 0;
 }
 
 .lang-toggle {
@@ -987,10 +988,21 @@ a:hover {
 
   .header-container-whatwedo {
     position: relative;
+    flex-wrap: nowrap;
+  }
+
+  .header-left {
+    flex: 1;
+    min-width: 0;
   }
 
   .mobile-menu-toggle {
     display: flex;
+    flex-shrink: 0;
+  }
+
+  .logo-new {
+    flex-shrink: 0;
   }
 
   .nav-mobile {
@@ -1017,8 +1029,10 @@ a:hover {
 }
 
 /* RTL Support */
+/* RTL: Keep language and call button order the same (language first, then call) */
 [dir="rtl"] .header-actions {
-  flex-direction: row-reverse;
+  /* Don't reverse - keep language first, then call button */
+  flex-direction: row;
 }
 
 [dir="rtl"] .step-new {
@@ -1050,6 +1064,11 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 24px;
+}
+
+/* Hide hamburger on desktop */
+.mobile-menu-toggle {
+  display: none;
 }
 
 .logo-new {
@@ -1099,6 +1118,7 @@ a:hover {
   cursor: pointer;
   padding: 0;
   z-index: 1001;
+  flex-shrink: 0;
 }
 
 .mobile-menu-toggle span {
@@ -1394,13 +1414,15 @@ a:hover {
 /* Responsive for What We Do Page */
 @media (max-width: 768px) {
   .header-container-whatwedo {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 16px;
     position: relative;
   }
 
   .header-left {
     gap: 16px;
+    flex: 1;
+    min-width: 0;
   }
 
   .nav-desktop {
@@ -1409,6 +1431,11 @@ a:hover {
 
   .mobile-menu-toggle {
     display: flex;
+    flex-shrink: 0;
+  }
+
+  .logo-new {
+    flex-shrink: 0;
   }
 
   .nav-mobile {
@@ -1467,8 +1494,10 @@ a:hover {
   flex-direction: row-reverse;
 }
 
+/* RTL: Keep hamburger and logo order the same (hamburger first, then logo) */
 [dir="rtl"] .header-left {
-  flex-direction: row-reverse;
+  /* Don't reverse - keep hamburger first, then logo */
+  flex-direction: row;
 }
 
 [dir="rtl"] .step-whatwedo {
