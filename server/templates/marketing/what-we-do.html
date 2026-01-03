@@ -159,8 +159,8 @@
         <div class="footer-col-whatwedo">
           <h3 id="footer-contact" class="footer-heading-whatwedo">Contact</h3>
           <div class="footer-contact-info">
-            <p id="footer-phone" class="footer-contact-item">Phone: <span class="ltr-text">+962 079 581 6783</span></p>
-            <p id="footer-email" class="footer-contact-item">Email: <span class="ltr-text">support@modohq.app</span></p>
+            <p id="footer-phone" class="footer-contact-item"><span id="footer-phone-label">Phone:</span> <span class="ltr-text">+962 079 581 6783</span></p>
+            <p id="footer-email" class="footer-contact-item"><span id="footer-email-label">Email:</span> <span class="ltr-text">support@modohq.app</span></p>
           </div>
         </div>
       </div>
@@ -304,8 +304,8 @@
       document.getElementById('footer-contact').textContent = t.footer.contact;
       document.getElementById('footer-link-home').textContent = t.nav.home;
       document.getElementById('footer-link-whatwedo').textContent = t.nav.whatWeDo;
-      document.getElementById('footer-phone').textContent = t.footer.phone + ' ';
-      document.getElementById('footer-email').textContent = t.footer.email + ' ';
+      document.getElementById('footer-phone-label').textContent = t.footer.phone + ' ';
+      document.getElementById('footer-email-label').textContent = t.footer.email + ' ';
       document.getElementById('footer-copyright').textContent = t.footer.copyright;
       
       // Update call button and language toggle
