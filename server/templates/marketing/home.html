@@ -78,6 +78,7 @@
       <nav class="nav-desktop" aria-label="Main navigation">
         <a href="/marketing/" id="nav-home" class="nav-link nav-link-active">Home</a>
         <a href="/marketing/what-we-do" id="nav-whatwedo" class="nav-link">What We Do</a>
+        <a href="/marketing/become-electrician" id="nav-become-electrician" class="nav-link">Become an Electrician</a>
       </nav>
 
       <div class="header-actions">
@@ -311,7 +312,8 @@
       en: {
         nav: {
           home: "Home",
-          whatWeDo: "What We Do"
+          whatWeDo: "What We Do",
+          becomeElectrician: "Become an Electrician"
         },
         hero: {
           title: "Having an Electrical Problem?",
@@ -371,7 +373,8 @@
       ar: {
         nav: {
           home: "الرئيسية",
-          whatWeDo: "ماذا نقدم"
+          whatWeDo: "ماذا نقدم",
+          becomeElectrician: "كن كهربائياً"
         },
         hero: {
           title: "هل لديك مشكلة كهربائية؟",
@@ -495,6 +498,7 @@
       // Update navigation
       document.getElementById('nav-home').textContent = t.nav.home;
       document.getElementById('nav-whatwedo').textContent = t.nav.whatWeDo;
+      document.getElementById('nav-become-electrician').textContent = t.nav.becomeElectrician;
       
       // Update input directions
       const inputs = document.querySelectorAll('.form-input, .form-textarea');
