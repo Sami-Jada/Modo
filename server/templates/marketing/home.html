@@ -451,6 +451,8 @@
     // Update page content based on language
     function updateLanguage(lang) {
       currentLanguage = lang;
+      // Save to sessionStorage for persistence across pages
+      sessionStorage.setItem('modo-language', lang);
       const t = content[lang];
       const isRTL = lang === 'ar';
       
@@ -623,8 +625,9 @@
       }
     });
 
-    // Initialize with Arabic
-    updateLanguage('ar');
+    // Initialize language - check sessionStorage first, default to Arabic
+    const savedLanguage = sessionStorage.getItem('modo-language') || 'ar';
+    updateLanguage(savedLanguage);
   </script>
 </body>
 </html>
