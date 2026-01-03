@@ -1024,61 +1024,6 @@ a:hover {
   flex-direction: row-reverse;
 }
 
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #F9FAFB;
-    --text-secondary: #9CA3AF;
-    --bg: #111827;
-    --bg-secondary: #1F2937;
-    --border: #374151;
-  }
-
-  body {
-    background: linear-gradient(to bottom, #78350F, #111827);
-  }
-
-  .hero {
-    background: linear-gradient(135deg, #78350F 0%, #92400E 100%);
-  }
-
-  .page-header {
-    background: linear-gradient(135deg, #78350F 0%, #92400E 100%);
-  }
-
-  .contact-form {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  }
-
-  .footer {
-    background: #030712;
-  }
-
-  .footer-bottom {
-    border-top-color: #1F2937;
-  }
-
-  .header-new {
-    background: #1F2937;
-  }
-
-  .hero-card {
-    background: linear-gradient(135deg, #78350F 0%, #92400E 100%);
-  }
-
-  .testimonial-card {
-    background: #1F2937;
-  }
-
-  .final-cta {
-    background: #1F2937;
-  }
-
-  .footer-new {
-    background: #1F2937;
-    border-top-color: #374151;
-  }
-}
 
 /* ============================================
    WHAT WE DO PAGE STYLES
@@ -1418,22 +1363,3 @@ a:hover {
   flex-direction: row-reverse;
 }
 
-/* Dark mode for What We Do */
-@media (prefers-color-scheme: dark) {
-  .hero-whatwedo {
-    background: linear-gradient(135deg, #78350F 0%, #92400E 100%);
-  }
-
-  .how-it-works-whatwedo {
-    background: #1F2937;
-  }
-
-  .footer-whatwedo {
-    background: #1F2937;
-    border-top-color: #374151;
-  }
-
-  .footer-bottom-whatwedo {
-    border-top-color: #374151;
-  }
-}
