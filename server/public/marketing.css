@@ -1029,10 +1029,9 @@ a:hover {
 }
 
 /* RTL Support */
-/* RTL: Keep language and call button order the same (language first, then call) */
+/* RTL: Reverse header-actions so Call is leftmost, then Language */
 [dir="rtl"] .header-actions {
-  /* Don't reverse - keep language first, then call button */
-  flex-direction: row;
+  flex-direction: row-reverse;
 }
 
 [dir="rtl"] .step-new {
@@ -1494,10 +1493,12 @@ a:hover {
   flex-direction: row-reverse;
 }
 
-/* RTL: Keep hamburger and logo order the same (hamburger first, then logo) */
-[dir="rtl"] .header-left {
-  /* Don't reverse - keep hamburger first, then logo */
-  flex-direction: row;
+/* RTL Desktop: Reverse header-left so logo is rightmost, then nav links */
+/* Only apply to desktop - mobile keeps hamburger first */
+@media (min-width: 769px) {
+  [dir="rtl"] .header-left {
+    flex-direction: row-reverse;
+  }
 }
 
 [dir="rtl"] .step-whatwedo {
