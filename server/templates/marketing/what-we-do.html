@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-root">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,100 +46,281 @@
   
 </head>
 <body>
-  <header>
-    <nav class="nav" role="navigation" aria-label="Main navigation">
-      <div class="container nav-content">
-        <a href="/marketing/" class="logo" aria-label="Modo Home">Modo</a>
-        <ul class="nav-links">
-          <li><a href="/marketing/">Home</a></li>
-          <li><a href="/marketing/what-we-do" class="active" aria-current="page">What We Do</a></li>
-        </ul>
+  <!-- Header -->
+  <header class="header-new">
+    <div class="header-container-whatwedo">
+      <div class="logo-new">Modo</div>
+      
+      <nav class="nav-desktop" aria-label="Main navigation">
+        <a href="/marketing/" id="nav-home" class="nav-link">Home</a>
+        <a href="/marketing/what-we-do" id="nav-whatwedo" class="nav-link nav-link-active">What We Do</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="lang-toggle" class="lang-toggle" aria-label="Toggle language">
+          <svg class="icon-globe" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span id="lang-text" class="lang-text">العربية</span>
+        </button>
+        <a href="tel:+962795816783" class="call-btn">
+          <svg class="icon-phone" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          <span id="call-text" class="call-text">Call Now</span>
+        </a>
       </div>
-    </nav>
+    </div>
   </header>
 
-  <main>
-    <section class="page-header" aria-labelledby="page-heading">
-      <div class="container">
-        <h1 id="page-heading">What We Do</h1>
-        <p>We connect you with verified, licensed electricians in Jordan. Whatever your electrical issue, we're here to help.</p>
-      </div>
-    </section>
+  <!-- Hero Section -->
+  <section class="hero-whatwedo">
+    <div class="hero-whatwedo-container">
+      <h1 id="hero-title" class="hero-whatwedo-title">What We Do</h1>
+      <p id="hero-subtitle" class="hero-whatwedo-subtitle">We connect you with verified, licensed electricians in Jordan. Whatever your electrical issue, we're here to help.</p>
+    </div>
+  </section>
 
-    <section class="about-section" aria-labelledby="about-heading">
-      <div class="container">
-        <h2 id="about-heading">Simple. Reliable. Fixed Price.</h2>
-        <div class="about-content">
-          <p>Having an electrical problem at home? Don't worry about finding the right person or negotiating prices. Just tell us what's going on.</p>
-          <p>We'll reach out to understand your situation, give you a clear fixed price upfront, and send a verified electrician to solve your problem. No surprises, no hidden fees.</p>
-          <p>Our electricians are all licensed and insured. We stand behind their work. If something isn't right, we'll make it right.</p>
+  <!-- Introduction -->
+  <section class="intro-section">
+    <div class="intro-container">
+      <h2 id="intro-title" class="intro-title">Simple. Reliable. Fixed Price.</h2>
+      <div class="intro-content">
+        <p id="intro-p1" class="intro-paragraph">Having an electrical problem at home? Don't worry about finding the right person or negotiating prices. Just tell us what's going on.</p>
+        <p id="intro-p2" class="intro-paragraph">We'll reach out to understand your situation, give you a clear fixed price upfront, and send a verified electrician to solve your problem. No surprises, no hidden fees.</p>
+        <p id="intro-p3" class="intro-paragraph">Our electricians are all licensed and insured. We stand behind their work. If something isn't right, we'll make it right.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works-whatwedo">
+    <div class="how-it-works-whatwedo-container">
+      <h2 id="how-title" class="how-title-whatwedo">How It Works</h2>
+      <div class="steps-whatwedo">
+        <div class="step-whatwedo">
+          <div class="step-number-whatwedo">1</div>
+          <div class="step-content-whatwedo">
+            <h3 id="step1-title" class="step-title-whatwedo">Tell Us What's Wrong</h3>
+            <p id="step1-desc" class="step-desc-whatwedo">Fill out the form on our home page. Describe your electrical issue - anything at all.</p>
+          </div>
+        </div>
+        <div class="step-whatwedo">
+          <div class="step-number-whatwedo">2</div>
+          <div class="step-content-whatwedo">
+            <h3 id="step2-title" class="step-title-whatwedo">We Contact You</h3>
+            <p id="step2-desc" class="step-desc-whatwedo">Our team will call you to understand the problem and give you a fixed price.</p>
+          </div>
+        </div>
+        <div class="step-whatwedo">
+          <div class="step-number-whatwedo">3</div>
+          <div class="step-content-whatwedo">
+            <h3 id="step3-title" class="step-title-whatwedo">We Send Help</h3>
+            <p id="step3-desc" class="step-desc-whatwedo">A verified electrician comes to your location and fixes the problem.</p>
+          </div>
+        </div>
+        <div class="step-whatwedo">
+          <div class="step-number-whatwedo">4</div>
+          <div class="step-content-whatwedo">
+            <h3 id="step4-title" class="step-title-whatwedo">Pay the Agreed Price</h3>
+            <p id="step4-desc" class="step-desc-whatwedo">You pay exactly what was quoted. No surprises, no extra charges.</p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="how-it-works" aria-labelledby="process-heading">
-      <div class="container">
-        <h2 id="process-heading">How It Works</h2>
-        <ol class="steps">
-          <li class="step">
-            <div class="step-icon" aria-hidden="true">1</div>
-            <h3>Tell Us What's Wrong</h3>
-            <p>Fill out the form on our home page. Describe your electrical issue - anything at all.</p>
-          </li>
-          <li class="step">
-            <div class="step-icon" aria-hidden="true">2</div>
-            <h3>We Contact You</h3>
-            <p>Our team will call you to understand the problem and give you a fixed price.</p>
-          </li>
-          <li class="step">
-            <div class="step-icon" aria-hidden="true">3</div>
-            <h3>We Send Help</h3>
-            <p>A verified electrician comes to your location and fixes the problem.</p>
-          </li>
-          <li class="step">
-            <div class="step-icon" aria-hidden="true">4</div>
-            <h3>Pay the Agreed Price</h3>
-            <p>You pay exactly what was quoted. No surprises, no extra charges.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
+  <!-- CTA Section -->
+  <section class="cta-section-whatwedo">
+    <div class="cta-container-whatwedo">
+      <h2 id="cta-title" class="cta-title-whatwedo">Have an Electrical Issue?</h2>
+      <p id="cta-subtitle" class="cta-subtitle-whatwedo">Tell us what's happening and we'll get back to you.</p>
+      <a href="/marketing/" id="cta-button" class="cta-button-whatwedo">Contact Us</a>
+    </div>
+  </section>
 
-    <section class="contact" id="contact-cta" aria-labelledby="cta-heading">
-      <div class="container" style="text-align: center;">
-        <h2 id="cta-heading">Have an Electrical Issue?</h2>
-        <p class="contact-subtitle">Tell us what's happening and we'll get back to you.</p>
-        <a href="/marketing/#contact" class="hero-cta">Contact Us</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <h3>Modo</h3>
-          <p>Connecting Jordan with reliable, professional electrical help.</p>
+  <!-- Footer -->
+  <footer class="footer-whatwedo">
+    <div class="footer-container-whatwedo">
+      <div class="footer-grid-whatwedo">
+        <div class="footer-col-whatwedo">
+          <div class="footer-logo-whatwedo">Modo</div>
+          <p id="footer-tagline" class="footer-tagline-whatwedo">Connecting Jordan with reliable, professional electrical help.</p>
         </div>
-        <nav class="footer-links" aria-label="Footer navigation">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="/marketing/">Home</a></li>
-            <li><a href="/marketing/what-we-do">What We Do</a></li>
-          </ul>
-        </nav>
-        <div class="footer-links">
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="mailto:support@modohq.app">support@modohq.app</a></li>
-            <li><a href="tel:+962795816783">+962 79 581 6783</a></li>
-          </ul>
+        <div class="footer-col-whatwedo">
+          <h3 id="footer-quicklinks" class="footer-heading-whatwedo">Quick Links</h3>
+          <div class="footer-links-whatwedo">
+            <a href="/marketing/" id="footer-link-home" class="footer-link-whatwedo">Home</a>
+            <a href="/marketing/what-we-do" id="footer-link-whatwedo" class="footer-link-whatwedo">What We Do</a>
+          </div>
+        </div>
+        <div class="footer-col-whatwedo">
+          <h3 id="footer-contact" class="footer-heading-whatwedo">Contact</h3>
+          <div class="footer-contact-info">
+            <p id="footer-phone" class="footer-contact-item">Phone: <span class="ltr-text">+962 079 581 6783</span></p>
+            <p id="footer-email" class="footer-contact-item">Email: <span class="ltr-text">support@modohq.app</span></p>
+          </div>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Modo. All rights reserved.</p>
+      <div class="footer-bottom-whatwedo">
+        <p id="footer-copyright" class="footer-copyright-whatwedo">© 2026 Modo. All rights reserved.</p>
       </div>
     </div>
   </footer>
+
+  <script>
+    // Language content
+    const content = {
+      en: {
+        nav: {
+          home: "Home",
+          whatWeDo: "What We Do"
+        },
+        hero: {
+          title: "What We Do",
+          subtitle: "We connect you with verified, licensed electricians in Jordan. Whatever your electrical issue, we're here to help."
+        },
+        intro: {
+          title: "Simple. Reliable. Fixed Price.",
+          p1: "Having an electrical problem at home? Don't worry about finding the right person or negotiating prices. Just tell us what's going on.",
+          p2: "We'll reach out to understand your situation, give you a clear fixed price upfront, and send a verified electrician to solve your problem. No surprises, no hidden fees.",
+          p3: "Our electricians are all licensed and insured. We stand behind their work. If something isn't right, we'll make it right."
+        },
+        howItWorks: {
+          title: "How It Works",
+          step1Title: "Tell Us What's Wrong",
+          step1Desc: "Fill out the form on our home page. Describe your electrical issue - anything at all.",
+          step2Title: "We Contact You",
+          step2Desc: "Our team will call you to understand the problem and give you a fixed price.",
+          step3Title: "We Send Help",
+          step3Desc: "A verified electrician comes to your location and fixes the problem.",
+          step4Title: "Pay the Agreed Price",
+          step4Desc: "You pay exactly what was quoted. No surprises, no extra charges."
+        },
+        cta: {
+          title: "Have an Electrical Issue?",
+          subtitle: "Tell us what's happening and we'll get back to you.",
+          button: "Contact Us"
+        },
+        footer: {
+          tagline: "Connecting Jordan with reliable, professional electrical help.",
+          quickLinks: "Quick Links",
+          contact: "Contact",
+          phone: "Phone:",
+          email: "Email:",
+          copyright: "© 2026 Modo. All rights reserved."
+        }
+      },
+      ar: {
+        nav: {
+          home: "الرئيسية",
+          whatWeDo: "ماذا نقدم"
+        },
+        hero: {
+          title: "ماذا نقدم",
+          subtitle: "نربطك بكهربائيين مرخصين وموثوقين في الأردن. مهما كانت مشكلتك الكهربائية، نحن هنا للمساعدة."
+        },
+        intro: {
+          title: "بسيط. موثوق. سعر ثابت.",
+          p1: "هل لديك مشكلة كهربائية في المنزل؟ لا تقلق بشأن إيجاد الشخص المناسب أو التفاوض على الأسعار. فقط أخبرنا بما يحدث.",
+          p2: "سنتواصل معك لفهم وضعك، ونعطيك سعراً ثابتاً وواضحاً مقدماً، ونرسل كهربائياً موثوقاً لحل مشكلتك. لا مفاجآت، لا رسوم خفية.",
+          p3: "جميع الكهربائيين لدينا مرخصون ومؤمنون. نحن نضمن عملهم. إذا كان هناك شيء غير صحيح، سنصلحه."
+        },
+        howItWorks: {
+          title: "كيف نعمل",
+          step1Title: "أخبرنا بالمشكلة",
+          step1Desc: "املأ النموذج في صفحتنا الرئيسية. صف مشكلتك الكهربائية - أي شيء على الإطلاق.",
+          step2Title: "نتواصل معك",
+          step2Desc: "سيتصل بك فريقنا لفهم المشكلة وإعطائك سعراً ثابتاً.",
+          step3Title: "نرسل المساعدة",
+          step3Desc: "يأتي كهربائي موثوق إلى موقعك ويصلح المشكلة.",
+          step4Title: "ادفع السعر المتفق عليه",
+          step4Desc: "تدفع بالضبط ما تم عرضه. لا مفاجآت، لا رسوم إضافية."
+        },
+        cta: {
+          title: "هل لديك مشكلة كهربائية؟",
+          subtitle: "أخبرنا بما يحدث وسنعاود الاتصال بك.",
+          button: "اتصل بنا"
+        },
+        footer: {
+          tagline: "نربط الأردن بمساعدة كهربائية موثوقة واحترافية.",
+          quickLinks: "روابط سريعة",
+          contact: "اتصل بنا",
+          phone: "الهاتف:",
+          email: "البريد الإلكتروني:",
+          copyright: "© 2026 Modo. جميع الحقوق محفوظة."
+        }
+      }
+    };
+
+    // Language state
+    let currentLanguage = 'en';
+
+    // Update page content based on language
+    function updateLanguage(lang) {
+      currentLanguage = lang;
+      const t = content[lang];
+      const isRTL = lang === 'ar';
+      
+      // Update HTML direction
+      document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+      document.documentElement.setAttribute('lang', lang);
+      
+      // Update navigation
+      document.getElementById('nav-home').textContent = t.nav.home;
+      document.getElementById('nav-whatwedo').textContent = t.nav.whatWeDo;
+      
+      // Update hero
+      document.getElementById('hero-title').textContent = t.hero.title;
+      document.getElementById('hero-subtitle').textContent = t.hero.subtitle;
+      
+      // Update intro
+      document.getElementById('intro-title').textContent = t.intro.title;
+      document.getElementById('intro-p1').textContent = t.intro.p1;
+      document.getElementById('intro-p2').textContent = t.intro.p2;
+      document.getElementById('intro-p3').textContent = t.intro.p3;
+      
+      // Update how it works
+      document.getElementById('how-title').textContent = t.howItWorks.title;
+      document.getElementById('step1-title').textContent = t.howItWorks.step1Title;
+      document.getElementById('step1-desc').textContent = t.howItWorks.step1Desc;
+      document.getElementById('step2-title').textContent = t.howItWorks.step2Title;
+      document.getElementById('step2-desc').textContent = t.howItWorks.step2Desc;
+      document.getElementById('step3-title').textContent = t.howItWorks.step3Title;
+      document.getElementById('step3-desc').textContent = t.howItWorks.step3Desc;
+      document.getElementById('step4-title').textContent = t.howItWorks.step4Title;
+      document.getElementById('step4-desc').textContent = t.howItWorks.step4Desc;
+      
+      // Update CTA
+      document.getElementById('cta-title').textContent = t.cta.title;
+      document.getElementById('cta-subtitle').textContent = t.cta.subtitle;
+      document.getElementById('cta-button').textContent = t.cta.button;
+      
+      // Update footer
+      document.getElementById('footer-tagline').textContent = t.footer.tagline;
+      document.getElementById('footer-quicklinks').textContent = t.footer.quickLinks;
+      document.getElementById('footer-contact').textContent = t.footer.contact;
+      document.getElementById('footer-link-home').textContent = t.nav.home;
+      document.getElementById('footer-link-whatwedo').textContent = t.nav.whatWeDo;
+      document.getElementById('footer-phone').textContent = t.footer.phone + ' ';
+      document.getElementById('footer-email').textContent = t.footer.email + ' ';
+      document.getElementById('footer-copyright').textContent = t.footer.copyright;
+      
+      // Update call button and language toggle
+      document.getElementById('call-text').textContent = lang === 'en' ? 'Call Now' : 'اتصل الآن';
+      document.getElementById('lang-text').textContent = lang === 'en' ? 'العربية' : 'English';
+    }
+
+    // Language toggle
+    document.getElementById('lang-toggle').addEventListener('click', function() {
+      currentLanguage = currentLanguage === 'en' ? 'ar' : 'en';
+      updateLanguage(currentLanguage);
+    });
+
+    // Initialize with English
+    updateLanguage('en');
+  </script>
 </body>
 </html>

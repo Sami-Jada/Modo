@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-root">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,119 +70,428 @@
   
 </head>
 <body>
-  <header>
-    <nav class="nav" role="navigation" aria-label="Main navigation">
-      <div class="container nav-content">
-        <a href="/marketing/" class="logo" aria-label="Modo Home">Modo</a>
-        <ul class="nav-links">
-          <li><a href="/marketing/" class="active" aria-current="page">Home</a></li>
-          <li><a href="/marketing/what-we-do">What We Do</a></li>
-        </ul>
+  <!-- Header -->
+  <header class="header-new">
+    <div class="header-container">
+      <div class="logo-new">Modo</div>
+      <div class="header-actions">
+        <button id="lang-toggle" class="lang-toggle" aria-label="Toggle language">
+          <svg class="icon-globe" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span id="lang-text" class="lang-text">العربية</span>
+        </button>
+        <a href="tel:+962795816783" class="call-btn">
+          <svg class="icon-phone" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          <span id="call-text" class="call-text">Call Now</span>
+        </a>
       </div>
-    </nav>
+    </div>
   </header>
 
-  <main>
-    <section class="hero" aria-labelledby="hero-heading">
-      <div class="container">
-        <h1 id="hero-heading">Having an Electrical Problem?</h1>
-        <p>Tell us what's going on and we'll connect you with a verified electrician who can help. Fixed prices, no surprises.</p>
-        <a href="#contact" class="hero-cta">Get Help Now</a>
-      </div>
-    </section>
-
-    <section class="how-it-works" aria-labelledby="how-heading">
-      <div class="container">
-        <h2 id="how-heading">How It Works</h2>
-        <ol class="steps">
-          <li class="step">
-            <div class="step-icon" aria-hidden="true">1</div>
-            <h3>Tell Us Your Issue</h3>
-            <p>Describe your electrical problem in the form below. Any issue, big or small.</p>
-          </li>
-          <li class="step">
-            <div class="step-icon" aria-hidden="true">2</div>
-            <h3>We Reach Out</h3>
-            <p>Our team will contact you to understand your needs and give you a fixed price.</p>
-          </li>
-          <li class="step">
-            <div class="step-icon" aria-hidden="true">3</div>
-            <h3>Problem Solved</h3>
-            <p>A verified electrician arrives, fixes the issue, and you pay the agreed price.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="contact" id="contact" aria-labelledby="contact-heading">
-      <div class="container">
-        <h2 id="contact-heading">Tell Us What's Wrong</h2>
-        <p class="contact-subtitle">Describe your electrical issue and we'll get back to you as soon as possible.</p>
+  <!-- Hero Section with Inline Form -->
+  <section class="hero-new" id="hero-section">
+    <div class="hero-container">
+      <div class="hero-card">
+        <h1 id="hero-title" class="hero-title">Having an Electrical Problem?</h1>
+        <p id="hero-location" class="hero-location">Serving Amman, Jordan</p>
+        <p id="hero-subtitle" class="hero-subtitle">Get expert help in minutes. Licensed electricians ready to assist.</p>
         
-        <form class="contact-form" id="contact-form" action="/marketing/contact" method="POST" aria-label="Contact form">
+        <!-- Trust Badges -->
+        <div class="trust-badges">
+          <div class="trust-badge">
+            <svg class="trust-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            <span id="badge1">Licensed & Insured</span>
+          </div>
+          <div class="trust-badge">
+            <svg class="trust-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span id="badge2">Fast Response</span>
+          </div>
+          <div class="trust-badge">
+            <svg class="trust-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <span id="badge3">Same-Day Service</span>
+          </div>
+        </div>
+
+        <!-- Quick Lead Form -->
+        <form class="lead-form" id="contact-form" aria-label="Contact form">
           <div id="form-message" role="alert" aria-live="polite"></div>
           
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Full Name <span aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
-              <input type="text" id="name" name="name" required placeholder="Your full name" autocomplete="name">
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone Number <span aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
-              <input type="tel" id="phone" name="phone" required placeholder="+962 7XX XXX XXX" autocomplete="tel">
-            </div>
+          <div class="form-field">
+            <label for="firstName" id="firstNameLabel">First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              required
+              placeholder="Ahmad"
+              autocomplete="given-name"
+              class="form-input"
+            />
           </div>
           
-          <div class="form-group">
-            <label for="email">Email Address <span class="optional">(optional)</span></label>
-            <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email">
+          <div class="form-field">
+            <label for="lastName" id="lastNameLabel">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              required
+              placeholder="Khaled"
+              autocomplete="family-name"
+              class="form-input"
+            />
           </div>
           
-          <div class="form-group">
-            <label for="address">Your Address <span aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
-            <input type="text" id="address" name="address" required placeholder="Where do you need service?" autocomplete="street-address">
+          <div class="form-field">
+            <label for="phone" id="phoneLabel">Your Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              required
+              placeholder="(079) 123-4567"
+              autocomplete="tel"
+              class="form-input"
+            />
           </div>
           
-          <div class="form-group">
-            <label for="description">What's the Problem? <span aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
-            <textarea id="description" name="description" required placeholder="Tell us what's happening with your electricity. The more detail, the better we can help."></textarea>
+          <div class="form-field">
+            <label for="address" id="addressLabel">Your Address</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              required
+              placeholder="Where do you need service?"
+              autocomplete="street-address"
+              class="form-input"
+            />
           </div>
           
-          <button type="submit" class="submit-btn" id="submit-btn">Submit Request</button>
+          <div class="form-field">
+            <label for="issue" id="issueLabel">What's the issue?</label>
+            <textarea
+              id="issue"
+              name="issue"
+              required
+              placeholder="Describe your electrical problem..."
+              rows="3"
+              class="form-textarea"
+            ></textarea>
+          </div>
+          
+          <button type="submit" class="submit-btn-new" id="submit-btn">
+            <span id="submit-text">Submit Request →</span>
+          </button>
+          
+          <p class="form-disclaimer" id="form-disclaimer">
+            We'll contact you within 30 minutes • No obligation quote
+          </p>
         </form>
-      </div>
-    </section>
-  </main>
 
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <h3>Modo</h3>
-          <p>Connecting Jordan with reliable, professional electrical help.</p>
-        </div>
-        <nav class="footer-links" aria-label="Footer navigation">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="/marketing/">Home</a></li>
-            <li><a href="/marketing/what-we-do">What We Do</a></li>
-          </ul>
-        </nav>
-        <div class="footer-links">
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="mailto:support@modohq.app">support@modohq.app</a></li>
-            <li><a href="tel:+962795816783">+962 79 581 6783</a></li>
-          </ul>
+        <!-- Alternative CTA -->
+        <div class="whatsapp-cta">
+          <p id="whatsapp-prefix" class="whatsapp-prefix">Prefer WhatsApp?</p>
+          <a 
+            href="https://wa.me/message/TRY6ASKLAIBZN1" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="whatsapp-btn"
+          >
+            <svg class="whatsapp-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span>WhatsApp</span>
+          </a>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Modo. All rights reserved.</p>
+    </div>
+  </section>
+
+  <!-- How It Works - Condensed -->
+  <section class="how-it-works-new">
+    <div class="how-it-works-container">
+      <h2 id="how-title" class="how-title">How It Works</h2>
+      <div class="steps-new">
+        <div class="step-new">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3 id="step1-title" class="step-title">Tell Us Your Issue</h3>
+            <p id="step1-desc" class="step-desc">Describe your electrical problem in the form above. Any issue, big or small.</p>
+          </div>
+        </div>
+        <div class="step-new">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3 id="step2-title" class="step-title">We Reach Out Fast</h3>
+            <p id="step2-desc" class="step-desc">Our team will contact you within 30 minutes with a quote and available times.</p>
+          </div>
+        </div>
+        <div class="step-new">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3 id="step3-title" class="step-title">Problem Solved</h3>
+            <p id="step3-desc" class="step-desc">A licensed electrician arrives and fixes your issue the same day.</p>
+          </div>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="testimonials-section">
+    <div class="testimonials-container">
+      <h2 id="testimonials-title" class="testimonials-title">Trusted by Homeowners in Amman</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p id="review1" class="testimonial-text">Quick response, professional service. Had my outlet fixed within 2 hours of calling!</p>
+          <p id="customer1" class="testimonial-customer">- Sara M., Abdoun</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p id="review2" class="testimonial-text">Emergency service on a Sunday night. They came through when I needed them most.</p>
+          <p id="customer2" class="testimonial-customer">- Mohammad T., Jabal Amman</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="final-cta-container">
+      <h2 id="final-cta-title" class="final-cta-title">Ready to Get Started?</h2>
+      <p id="final-cta-subtitle" class="final-cta-subtitle">Fill out the form above or give us a call.</p>
+      <button 
+        id="scroll-top-btn"
+        class="scroll-top-btn"
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+      >
+        <span id="final-cta-button">Get Help Now ↑</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-new">
+    <div class="footer-container">
+      <div class="footer-logo">Modo</div>
+      <p id="footer-tagline" class="footer-tagline">Professional Electrical Services in Amman, Jordan</p>
+      <div class="footer-info">
+        <p id="footer-licensed">Licensed • Insured • Fast Response</p>
+        <p id="footer-phone">Phone: <span class="ltr-text">+962 079 581 6783</span></p>
+        <p id="footer-email">Email: <span class="ltr-text">support@modohq.app</span></p>
+      </div>
+      <p id="footer-copyright" class="footer-copyright">© 2026 Modo. All rights reserved.</p>
     </div>
   </footer>
 
   <script>
+    // Language content
+    const content = {
+      en: {
+        hero: {
+          title: "Having an Electrical Problem?",
+          location: "Serving Amman, Jordan",
+          subtitle: "Get expert help in minutes. Licensed electricians ready to assist.",
+          badge1: "Licensed & Insured",
+          badge2: "Fast Response",
+          badge3: "Same-Day Service"
+        },
+        form: {
+          firstNameLabel: "First Name",
+          firstNamePlaceholder: "Ahmad",
+          lastNameLabel: "Last Name",
+          lastNamePlaceholder: "Khaled",
+          phoneLabel: "Your Phone Number",
+          phonePlaceholder: "(079) 123-4567",
+          addressLabel: "Your Address",
+          addressPlaceholder: "Where do you need service?",
+          issueLabel: "What's the issue?",
+          issuePlaceholder: "Describe your electrical problem...",
+          submit: "Submit Request →",
+          disclaimer: "We'll contact you within 30 minutes • No obligation quote"
+        },
+        call: {
+          prefer: "Prefer WhatsApp?",
+          callNow: "Call Now"
+        },
+        howItWorks: {
+          title: "How It Works",
+          step1Title: "Tell Us Your Issue",
+          step1Desc: "Describe your electrical problem in the form above. Any issue, big or small.",
+          step2Title: "We Reach Out Fast",
+          step2Desc: "Our team will contact you within 30 minutes with a quote and available times.",
+          step3Title: "Problem Solved",
+          step3Desc: "A licensed electrician arrives and fixes your issue the same day."
+        },
+        testimonials: {
+          title: "Trusted by Homeowners in Amman",
+          review1: "Quick response, professional service. Had my outlet fixed within 2 hours of calling!",
+          customer1: "- Sara M., Abdoun",
+          review2: "Emergency service on a Sunday night. They came through when I needed them most.",
+          customer2: "- Mohammad T., Jabal Amman"
+        },
+        finalCta: {
+          title: "Ready to Get Started?",
+          subtitle: "Fill out the form above or give us a call.",
+          button: "Get Help Now ↑"
+        },
+        footer: {
+          tagline: "Professional Electrical Services in Amman, Jordan",
+          licensed: "Licensed • Insured • Fast Response",
+          phone: "Phone:",
+          email: "Email:",
+          copyright: "© 2026 Modo. All rights reserved."
+        }
+      },
+      ar: {
+        hero: {
+          title: "هل لديك مشكلة كهربائية؟",
+          location: "نخدم عمّان، الأردن",
+          subtitle: "احصل على مساعدة فورية من كهربائيين محترفين ومرخصين.",
+          badge1: "مرخص ومؤمن",
+          badge2: "استجابة سريعة",
+          badge3: "خدمة في نفس اليوم"
+        },
+        form: {
+          firstNameLabel: "الاسم الأول",
+          firstNamePlaceholder: "أحمد",
+          lastNameLabel: "اسم العائلة",
+          lastNamePlaceholder: "خالد",
+          phoneLabel: "رقم هاتفك",
+          phonePlaceholder: "٠٧٩ ١٢٣ ٤٥٦٧",
+          addressLabel: "عنوانك",
+          addressPlaceholder: "أين تحتاج الخدمة؟",
+          issueLabel: "ما هي المشكلة؟",
+          issuePlaceholder: "صف المشكلة الكهربائية...",
+          submit: "إرسال الطلب ←",
+          disclaimer: "سنتواصل معك خلال 30 دقيقة • عرض سعر بدون التزام"
+        },
+        call: {
+          prefer: "تفضل الواتساب؟",
+          callNow: "اتصل الآن"
+        },
+        howItWorks: {
+          title: "كيف نعمل",
+          step1Title: "أخبرنا بمشكلتك",
+          step1Desc: "صف المشكلة الكهربائية في النموذج أعلاه. أي مشكلة، كبيرة أو صغيرة.",
+          step2Title: "نتواصل معك بسرعة",
+          step2Desc: "سيتواصل فريقنا معك خلال 30 دقيقة مع عرض السعر والمواعيد المتاحة.",
+          step3Title: "حل المشكلة",
+          step3Desc: "يصل كهربائي مرخص ويصلح المشكلة في نفس اليوم."
+        },
+        testimonials: {
+          title: "موثوق به من أصحاب المنازل في عمّان",
+          review1: "استجابة سريعة وخدمة احترافية. تم إصلاح المقبس خلال ساعتين من الاتصال!",
+          customer1: "- سارة م.، عبدون",
+          review2: "خدمة طوارئ يوم الأحد ليلاً. كانوا متواجدين عندما احتجتهم.",
+          customer2: "- محمد ت.، جبل عمان"
+        },
+        finalCta: {
+          title: "هل أنت مستعد للبدء؟",
+          subtitle: "املأ النموذج أعلاه أو اتصل بنا.",
+          button: "احصل على المساعدة الآن ↑"
+        },
+        footer: {
+          tagline: "خدمات كهربائية احترافية في عمّان، الأردن",
+          licensed: "مرخص • مؤمن • استجابة سريعة",
+          phone: "الهاتف:",
+          email: "البريد الإلكتروني:",
+          copyright: "© 2026 Modo. جميع الحقوق محفوظة."
+        }
+      }
+    };
+
+    // Language state
+    let currentLanguage = 'en';
+
+    // Update page content based on language
+    function updateLanguage(lang) {
+      currentLanguage = lang;
+      const t = content[lang];
+      const isRTL = lang === 'ar';
+      
+      // Update HTML direction
+      document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+      document.documentElement.setAttribute('lang', lang);
+      
+      // Update all text content
+      document.getElementById('hero-title').textContent = t.hero.title;
+      document.getElementById('hero-location').textContent = t.hero.location;
+      document.getElementById('hero-subtitle').textContent = t.hero.subtitle;
+      document.getElementById('badge1').textContent = t.hero.badge1;
+      document.getElementById('badge2').textContent = t.hero.badge2;
+      document.getElementById('badge3').textContent = t.hero.badge3;
+      
+      document.getElementById('firstNameLabel').textContent = t.form.firstNameLabel;
+      document.getElementById('firstName').placeholder = t.form.firstNamePlaceholder;
+      document.getElementById('lastNameLabel').textContent = t.form.lastNameLabel;
+      document.getElementById('lastName').placeholder = t.form.lastNamePlaceholder;
+      document.getElementById('phoneLabel').textContent = t.form.phoneLabel;
+      document.getElementById('phone').placeholder = t.form.phonePlaceholder;
+      document.getElementById('addressLabel').textContent = t.form.addressLabel;
+      document.getElementById('address').placeholder = t.form.addressPlaceholder;
+      document.getElementById('issueLabel').textContent = t.form.issueLabel;
+      document.getElementById('issue').placeholder = t.form.issuePlaceholder;
+      document.getElementById('submit-text').textContent = t.form.submit;
+      document.getElementById('form-disclaimer').textContent = t.form.disclaimer;
+      
+      document.getElementById('whatsapp-prefix').textContent = t.call.prefer;
+      document.getElementById('call-text').textContent = t.call.callNow;
+      document.getElementById('lang-text').textContent = lang === 'en' ? 'العربية' : 'English';
+      
+      document.getElementById('how-title').textContent = t.howItWorks.title;
+      document.getElementById('step1-title').textContent = t.howItWorks.step1Title;
+      document.getElementById('step1-desc').textContent = t.howItWorks.step1Desc;
+      document.getElementById('step2-title').textContent = t.howItWorks.step2Title;
+      document.getElementById('step2-desc').textContent = t.howItWorks.step2Desc;
+      document.getElementById('step3-title').textContent = t.howItWorks.step3Title;
+      document.getElementById('step3-desc').textContent = t.howItWorks.step3Desc;
+      
+      document.getElementById('testimonials-title').textContent = t.testimonials.title;
+      document.getElementById('review1').textContent = t.testimonials.review1;
+      document.getElementById('customer1').textContent = t.testimonials.customer1;
+      document.getElementById('review2').textContent = t.testimonials.review2;
+      document.getElementById('customer2').textContent = t.testimonials.customer2;
+      
+      document.getElementById('final-cta-title').textContent = t.finalCta.title;
+      document.getElementById('final-cta-subtitle').textContent = t.finalCta.subtitle;
+      document.getElementById('final-cta-button').textContent = t.finalCta.button;
+      
+      document.getElementById('footer-tagline').textContent = t.footer.tagline;
+      document.getElementById('footer-licensed').textContent = t.footer.licensed;
+      document.getElementById('footer-phone').textContent = t.footer.phone + ' ';
+      document.getElementById('footer-email').textContent = t.footer.email + ' ';
+      document.getElementById('footer-copyright').textContent = t.footer.copyright;
+      
+      // Update input directions
+      const inputs = document.querySelectorAll('.form-input, .form-textarea');
+      inputs.forEach(input => {
+        input.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+      });
+    }
+
+    // Language toggle
+    document.getElementById('lang-toggle').addEventListener('click', function() {
+      currentLanguage = currentLanguage === 'en' ? 'ar' : 'en';
+      updateLanguage(currentLanguage);
+    });
+
+    // Form submission
     document.getElementById('contact-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       
@@ -190,13 +499,34 @@
       const submitBtn = document.getElementById('submit-btn');
       const messageEl = document.getElementById('form-message');
       
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const issue = document.getElementById('issue').value.trim();
+      
+      // Validation
+      if (!firstName || !lastName || !phone || !address || !issue) {
+        const errorMsg = currentLanguage === 'en' 
+          ? 'Please complete all fields' 
+          : 'يرجى إكمال جميع الحقول';
+        messageEl.innerHTML = '<div class="form-error">' + errorMsg + '</div>';
+        return;
+      }
+      
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Submitting...';
+      submitBtn.innerHTML = '<span id="submit-text">' + (currentLanguage === 'en' ? 'Submitting...' : 'جاري الإرسال...') + '</span>';
       messageEl.innerHTML = '';
       
       try {
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
+        // Map form fields to backend format
+        const data = {
+          name: firstName + ' ' + lastName, // Combine first and last name
+          phone: phone,
+          address: address,
+          description: issue, // Map issue to description
+          // email is optional, not included in new form
+        };
         
         const response = await fetch('/marketing/contact', {
           method: 'POST',
@@ -209,18 +539,33 @@
         const result = await response.json();
         
         if (response.ok) {
-          messageEl.innerHTML = '<div class="form-success">Thank you! We received your request and will contact you soon.</div>';
+          const successMsg = currentLanguage === 'en'
+            ? 'Thank you! We received your request and will contact you soon.'
+            : 'شكراً على تقديم طلبك! سيتواصل معك أحد وكلائنا قريباً.';
+          messageEl.innerHTML = '<div class="form-success">' + successMsg + '</div>';
           form.reset();
+          // Scroll to message
+          messageEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         } else {
-          messageEl.innerHTML = '<div class="form-error">' + (result.error || 'Something went wrong. Please try again.') + '</div>';
+          const errorMsg = result.error || (currentLanguage === 'en' 
+            ? 'Something went wrong. Please try again.' 
+            : 'حدث خطأ. يرجى المحاولة مرة أخرى.');
+          messageEl.innerHTML = '<div class="form-error">' + errorMsg + '</div>';
         }
       } catch (error) {
-        messageEl.innerHTML = '<div class="form-error">Unable to submit. Please try again later.</div>';
+        const errorMsg = currentLanguage === 'en'
+          ? 'Unable to submit. Please try again later.'
+          : 'تعذر الإرسال. يرجى المحاولة لاحقاً.';
+        messageEl.innerHTML = '<div class="form-error">' + errorMsg + '</div>';
       } finally {
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Submit Request';
+        const submitText = currentLanguage === 'en' ? 'Submit Request →' : 'إرسال الطلب ←';
+        submitBtn.innerHTML = '<span id="submit-text">' + submitText + '</span>';
       }
     });
+
+    // Initialize with English
+    updateLanguage('en');
   </script>
 </body>
 </html>

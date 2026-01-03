@@ -19,8 +19,14 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: var(--text);
-  background: var(--bg);
+  background: linear-gradient(to bottom, #FEF3C7, #FFFFFF);
   line-height: 1.6;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body[dir="rtl"] {
+  direction: rtl;
 }
 
 a {
@@ -506,6 +512,518 @@ a:hover {
   list-style: none;
 }
 
+/* ============================================
+   NEW DESIGN STYLES
+   ============================================ */
+
+/* New Header */
+.header-new {
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-container {
+  max-width: 896px;
+  margin: 0 auto;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-new {
+  font-size: 24px;
+  font-weight: 700;
+  color: #F59E0B;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4B5563;
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.lang-toggle:hover {
+  color: #F59E0B;
+  background: #F9FAFB;
+}
+
+.icon-globe {
+  color: currentColor;
+}
+
+.call-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #10B981;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+
+.call-btn:hover {
+  background: #059669;
+  text-decoration: none;
+}
+
+.icon-phone {
+  color: white;
+}
+
+/* New Hero Section */
+.hero-new {
+  padding: 32px 16px;
+}
+
+.hero-container {
+  max-width: 896px;
+  margin: 0 auto;
+}
+
+.hero-card {
+  background: linear-gradient(135deg, #FEF3C7 0%, #FDE047 100%);
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  padding: 24px;
+  color: #111827;
+}
+
+.hero-title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #111827;
+}
+
+.hero-location {
+  color: #374151;
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.hero-subtitle {
+  color: #374151;
+  margin-bottom: 24px;
+}
+
+/* Trust Badges */
+.trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #374151;
+}
+
+.trust-icon {
+  color: #111827;
+  flex-shrink: 0;
+}
+
+/* Lead Form */
+.lead-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: none;
+  background: white;
+  color: #111827;
+  font-size: 18px;
+  font-family: inherit;
+  transition: box-shadow 0.2s;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.3);
+}
+
+.form-textarea {
+  resize: none;
+  min-height: 80px;
+}
+
+.submit-btn-new {
+  width: 100%;
+  background: #111827;
+  color: white;
+  padding: 16px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  font-family: inherit;
+}
+
+.submit-btn-new:hover {
+  background: #1F2937;
+}
+
+.submit-btn-new:disabled {
+  background: #6B7280;
+  cursor: not-allowed;
+}
+
+.form-disclaimer {
+  text-align: center;
+  color: #374151;
+  font-size: 12px;
+  margin-top: 16px;
+}
+
+/* WhatsApp CTA */
+.whatsapp-cta {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.whatsapp-prefix {
+  color: #4B5563;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #10B981;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+
+.whatsapp-btn:hover {
+  background: #059669;
+  text-decoration: none;
+}
+
+.whatsapp-icon {
+  color: white;
+}
+
+/* How It Works New */
+.how-it-works-new {
+  background: #F9FAFB;
+  padding: 48px 16px;
+}
+
+.how-it-works-container {
+  max-width: 896px;
+  margin: 0 auto;
+}
+
+.how-title {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 32px;
+  color: #111827;
+}
+
+.steps-new {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.step-new {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.step-number {
+  font-size: 30px;
+  font-weight: 700;
+  color: #F59E0B;
+  flex-shrink: 0;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-title {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 4px;
+  color: #111827;
+}
+
+.step-desc {
+  color: #4B5563;
+}
+
+/* Testimonials */
+.testimonials-section {
+  padding: 48px 16px;
+}
+
+.testimonials-container {
+  max-width: 896px;
+  margin: 0 auto;
+}
+
+.testimonials-title {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 32px;
+  color: #111827;
+}
+
+.testimonials-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.testimonial-card {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.stars {
+  color: #FBBF24;
+  margin-bottom: 12px;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.testimonial-text {
+  color: #374151;
+  margin-bottom: 12px;
+}
+
+.testimonial-customer {
+  font-size: 14px;
+  color: #6B7280;
+}
+
+/* Final CTA */
+.final-cta {
+  background: white;
+  padding: 48px 16px;
+}
+
+.final-cta-container {
+  max-width: 896px;
+  margin: 0 auto;
+  text-align: center;
+  color: #111827;
+}
+
+.final-cta-title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.final-cta-subtitle {
+  color: #4B5563;
+  margin-bottom: 24px;
+  font-size: 18px;
+}
+
+.scroll-top-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #FEF3C7 0%, #FDE047 100%);
+  color: #111827;
+  padding: 16px 32px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  font-family: inherit;
+}
+
+.scroll-top-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* New Footer */
+.footer-new {
+  background: white;
+  color: #111827;
+  padding: 32px 16px;
+  border-top: 1px solid #E5E7EB;
+}
+
+.footer-container {
+  max-width: 896px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #F59E0B;
+  margin-bottom: 16px;
+}
+
+.footer-tagline {
+  color: #4B5563;
+  margin-bottom: 16px;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  color: #4B5563;
+  margin-bottom: 24px;
+}
+
+.ltr-text {
+  direction: ltr;
+  unicode-bidi: embed;
+  display: inline-block;
+}
+
+.footer-copyright {
+  color: #6B7280;
+  font-size: 12px;
+  margin-top: 24px;
+}
+
+/* Form Messages */
+#form-message {
+  margin-bottom: 16px;
+}
+
+.form-success {
+  background: #D1FAE5;
+  color: #065F46;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.form-error {
+  background: #FEE2E2;
+  color: #991B1B;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Responsive for New Design */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 24px;
+  }
+
+  .hero-location {
+    font-size: 16px;
+  }
+
+  .header-container {
+    padding: 12px 16px;
+  }
+
+  .call-text {
+    display: none;
+  }
+
+  .trust-badges {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .step-new {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .step-number {
+    margin: 0 auto;
+  }
+}
+
+/* RTL Support */
+[dir="rtl"] .header-actions {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .step-new {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .lang-toggle,
+[dir="rtl"] .call-btn,
+[dir="rtl"] .whatsapp-btn {
+  flex-direction: row-reverse;
+}
+
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
@@ -514,6 +1032,10 @@ a:hover {
     --bg: #111827;
     --bg-secondary: #1F2937;
     --border: #374151;
+  }
+
+  body {
+    background: linear-gradient(to bottom, #78350F, #111827);
   }
 
   .hero {
@@ -534,5 +1056,384 @@ a:hover {
 
   .footer-bottom {
     border-top-color: #1F2937;
+  }
+
+  .header-new {
+    background: #1F2937;
+  }
+
+  .hero-card {
+    background: linear-gradient(135deg, #78350F 0%, #92400E 100%);
+  }
+
+  .testimonial-card {
+    background: #1F2937;
+  }
+
+  .final-cta {
+    background: #1F2937;
+  }
+
+  .footer-new {
+    background: #1F2937;
+    border-top-color: #374151;
+  }
+}
+
+/* ============================================
+   WHAT WE DO PAGE STYLES
+   ============================================ */
+
+/* Header for What We Do Page */
+.header-container-whatwedo {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-link {
+  color: #374151;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: #111827;
+  text-decoration: none;
+}
+
+.nav-link-active {
+  color: #111827;
+  font-weight: 600;
+}
+
+/* Hero Section for What We Do */
+.hero-whatwedo {
+  background: linear-gradient(135deg, #FEF3C7 0%, #FDE047 100%);
+  padding: 64px 16px;
+}
+
+.hero-whatwedo-container {
+  max-width: 896px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-whatwedo-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #111827;
+}
+
+.hero-whatwedo-subtitle {
+  font-size: 20px;
+  color: #374151;
+}
+
+/* Intro Section */
+.intro-section {
+  padding: 64px 16px;
+}
+
+.intro-container {
+  max-width: 896px;
+  margin: 0 auto;
+}
+
+.intro-title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 32px;
+  color: #111827;
+}
+
+.intro-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.intro-paragraph {
+  font-size: 18px;
+  color: #374151;
+  line-height: 1.75;
+}
+
+/* How It Works for What We Do */
+.how-it-works-whatwedo {
+  background: #F9FAFB;
+  padding: 64px 16px;
+}
+
+.how-it-works-whatwedo-container {
+  max-width: 896px;
+  margin: 0 auto;
+}
+
+.how-title-whatwedo {
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 48px;
+  color: #111827;
+}
+
+.steps-whatwedo {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.step-whatwedo {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.step-number-whatwedo {
+  font-size: 36px;
+  font-weight: 700;
+  color: #F59E0B;
+  flex-shrink: 0;
+}
+
+.step-content-whatwedo {
+  flex: 1;
+}
+
+.step-title-whatwedo {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.step-desc-whatwedo {
+  font-size: 18px;
+  color: #4B5563;
+}
+
+/* CTA Section for What We Do */
+.cta-section-whatwedo {
+  padding: 64px 16px;
+}
+
+.cta-container-whatwedo {
+  max-width: 896px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cta-title-whatwedo {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #111827;
+}
+
+.cta-subtitle-whatwedo {
+  font-size: 20px;
+  color: #4B5563;
+  margin-bottom: 32px;
+}
+
+.cta-button-whatwedo {
+  display: inline-block;
+  background: linear-gradient(135deg, #FEF3C7 0%, #FDE047 100%);
+  color: #111827;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 18px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.cta-button-whatwedo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  text-decoration: none;
+}
+
+/* Footer for What We Do */
+.footer-whatwedo {
+  background: white;
+  color: #111827;
+  padding: 32px 16px;
+  border-top: 1px solid #E5E7EB;
+}
+
+.footer-container-whatwedo {
+  max-width: 1152px;
+  margin: 0 auto;
+}
+
+.footer-grid-whatwedo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.footer-col-whatwedo {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo-whatwedo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #F59E0B;
+  margin-bottom: 16px;
+}
+
+.footer-tagline-whatwedo {
+  color: #4B5563;
+}
+
+.footer-heading-whatwedo {
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #111827;
+}
+
+.footer-links-whatwedo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-link-whatwedo {
+  color: #4B5563;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-link-whatwedo:hover {
+  color: #111827;
+  text-decoration: none;
+}
+
+.footer-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-contact-item {
+  color: #4B5563;
+}
+
+.footer-bottom-whatwedo {
+  text-align: center;
+  padding-top: 32px;
+  border-top: 1px solid #E5E7EB;
+}
+
+.footer-copyright-whatwedo {
+  color: #6B7280;
+  font-size: 14px;
+}
+
+/* Responsive for What We Do Page */
+@media (max-width: 768px) {
+  .header-container-whatwedo {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .nav-desktop {
+    display: none;
+  }
+
+  .hero-whatwedo-title {
+    font-size: 28px;
+  }
+
+  .hero-whatwedo-subtitle {
+    font-size: 18px;
+  }
+
+  .intro-title {
+    font-size: 24px;
+  }
+
+  .intro-paragraph {
+    font-size: 16px;
+  }
+
+  .how-title-whatwedo {
+    font-size: 24px;
+  }
+
+  .step-whatwedo {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .step-number-whatwedo {
+    margin: 0 auto;
+  }
+
+  .cta-title-whatwedo {
+    font-size: 24px;
+  }
+
+  .cta-subtitle-whatwedo {
+    font-size: 18px;
+  }
+
+  .footer-grid-whatwedo {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .call-text {
+    display: none;
+  }
+}
+
+/* RTL Support for What We Do */
+[dir="rtl"] .header-container-whatwedo {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .step-whatwedo {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-desktop {
+  flex-direction: row-reverse;
+}
+
+/* Dark mode for What We Do */
+@media (prefers-color-scheme: dark) {
+  .hero-whatwedo {
+    background: linear-gradient(135deg, #78350F 0%, #92400E 100%);
+  }
+
+  .how-it-works-whatwedo {
+    background: #1F2937;
+  }
+
+  .footer-whatwedo {
+    background: #1F2937;
+    border-top-color: #374151;
+  }
+
+  .footer-bottom-whatwedo {
+    border-top-color: #374151;
   }
 }
