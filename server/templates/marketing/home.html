@@ -72,8 +72,14 @@
 <body>
   <!-- Header -->
   <header class="header-new">
-    <div class="header-container">
+    <div class="header-container-whatwedo">
       <div class="logo-new">Modo</div>
+      
+      <nav class="nav-desktop" aria-label="Main navigation">
+        <a href="/marketing/" id="nav-home" class="nav-link nav-link-active">Home</a>
+        <a href="/marketing/what-we-do" id="nav-whatwedo" class="nav-link">What We Do</a>
+      </nav>
+
       <div class="header-actions">
         <button id="lang-toggle" class="lang-toggle" aria-label="Toggle language">
           <svg class="icon-globe" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -292,8 +298,8 @@
       <p id="footer-tagline" class="footer-tagline">Professional Electrical Services in Amman, Jordan</p>
       <div class="footer-info">
         <p id="footer-licensed">Licensed • Insured • Fast Response</p>
-        <p id="footer-phone">Phone: <span class="ltr-text">+962 079 581 6783</span></p>
-        <p id="footer-email">Email: <span class="ltr-text">support@modohq.app</span></p>
+        <p id="footer-phone"><span id="footer-phone-label">Phone:</span> <span class="ltr-text">+962 079 581 6783</span></p>
+        <p id="footer-email"><span id="footer-email-label">Email:</span> <span class="ltr-text">support@modohq.app</span></p>
       </div>
       <p id="footer-copyright" class="footer-copyright">© 2026 Modo. All rights reserved.</p>
     </div>
@@ -303,6 +309,10 @@
     // Language content
     const content = {
       en: {
+        nav: {
+          home: "Home",
+          whatWeDo: "What We Do"
+        },
         hero: {
           title: "Having an Electrical Problem?",
           location: "Serving Amman, Jordan",
@@ -359,6 +369,10 @@
         }
       },
       ar: {
+        nav: {
+          home: "الرئيسية",
+          whatWeDo: "ماذا نقدم"
+        },
         hero: {
           title: "هل لديك مشكلة كهربائية؟",
           location: "نخدم عمّان، الأردن",
@@ -474,9 +488,13 @@
       
       document.getElementById('footer-tagline').textContent = t.footer.tagline;
       document.getElementById('footer-licensed').textContent = t.footer.licensed;
-      document.getElementById('footer-phone').textContent = t.footer.phone + ' ';
-      document.getElementById('footer-email').textContent = t.footer.email + ' ';
+      document.getElementById('footer-phone-label').textContent = t.footer.phone + ' ';
+      document.getElementById('footer-email-label').textContent = t.footer.email + ' ';
       document.getElementById('footer-copyright').textContent = t.footer.copyright;
+      
+      // Update navigation
+      document.getElementById('nav-home').textContent = t.nav.home;
+      document.getElementById('nav-whatwedo').textContent = t.nav.whatWeDo;
       
       // Update input directions
       const inputs = document.querySelectorAll('.form-input, .form-textarea');
