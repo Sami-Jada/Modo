@@ -22,7 +22,7 @@ Once you have `DATABASE_URL`:
 
 ```bash
 # Set environment variable
-export DATABASE_URL="your-supabase-connection-string"
+export DATABASE_URL="postgresql://postgres.bzrkxonsygwiqjhnyvuq:UgAQBxY7*3ye7CE@aws-1-ap-south-1.pooler.supabase.com:6543/postgres"
 
 # Generate migrations from schema
 npm run db:push
@@ -63,4 +63,5 @@ After migrations:
 - The `marketing_leads` table already exists and is working
 - All other tables are new and need to be created
 - Demo data seeding will happen automatically on first run (if tables are empty)
+
 

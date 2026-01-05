@@ -1,41 +1,28 @@
-# Cloudflare Workers and Pages Configuration
-
+# Cloudflare Pages Configuration
 name = "modo-app"
 compatibility_date = "2024-12-18"
 
-# Pages Configuration
-[env.production]
-pages_build_output_dir = "admin-panel/dist"
-
-# Workers Configuration
-[env.production.workers]
-# Workers Functions are in the functions/ directory
-# Cloudflare Pages will automatically detect and use them
-
-# Environment Variables (set via `wrangler secret put`)
-# DATABASE_URL - Supabase PostgreSQL connection string
-# SESSION_SECRET - Secret for encrypting session cookies
-# ADMIN_BASIC_AUTH_PASSWORD - Optional Basic Auth password for /admin route
-
-# Routes Configuration
-# Marketing pages (HTML) will be served by Pages from:
-# - server/templates/marketing/*.html
-# - server/public/marketing.css
-#
-# API routes will be handled by Workers Functions:
-# - functions/api/admin/[[path]].ts -> /api/admin/*
-# - functions/marketing/[[path]].ts -> /marketing/* (API endpoints only)
-
 # Build Configuration
 [build]
-command = "cd admin-panel && npm run build"
-cwd = "."
+command = "npm run build:cloudflare"
 
-# Pages will serve:
-# - admin-panel/dist/* (Admin Panel SPA)
-# - server/templates/marketing/*.html (Marketing pages)
-# - server/public/*.css (CSS files)
+# Pages output directory (contains marketing pages + admin panel)
+[env.production]
+pages_build_output_dir = "dist"
 
-# Note: For local development, use Express server (server/index.ts)
-# For production, deploy to Cloudflare Pages + Workers
+# Environment Variables (set via Cloudflare Dashboard or `wrangler secret put`)
+# DATABASE_URL - Supabase PostgreSQL connection string
+# SESSION_SECRET - Secret for encrypting session cookies
 
+# Workers Functions are automatically detected from the functions/ directory:
+# - functions/api/admin/[[path]].ts -> /api/admin/*
+# - functions/marketing/[[path]].ts -> /marketing/* (API endpoints: /marketing/contact, /marketing/electrician-application)
+
+# URL Structure after deployment:
+# / -> index.html (Marketing home)
+# /what-we-do -> what-we-do.html (Marketing)
+# /become-electrician -> become-electrician.html (Marketing)
+# /admin/ -> admin/index.html (Admin Panel SPA)
+# /marketing/contact -> Workers Function (POST)
+# /marketing/electrician-application -> Workers Function (POST)
+# /api/admin/* -> Workers Functions
