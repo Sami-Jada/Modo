@@ -2,12 +2,7 @@
 name = "modo-app"
 compatibility_date = "2024-12-18"
 
-# Build Configuration
-[build]
-command = "npm run build:cloudflare"
-
-# Pages output directory (contains marketing pages + admin panel)
-[env.production]
+# Pages build output directory (required for Pages)
 pages_build_output_dir = "dist"
 
 # Environment Variables (set via Cloudflare Dashboard or `wrangler secret put`)
