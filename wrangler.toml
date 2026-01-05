@@ -1,23 +1,4 @@
 # Cloudflare Pages Configuration
 name = "modo-app"
-compatibility_date = "2024-12-18"
-
-# Pages build output directory (required for Pages)
 pages_build_output_dir = "dist"
-
-# Environment Variables (set via Cloudflare Dashboard or `wrangler secret put`)
-# DATABASE_URL - Supabase PostgreSQL connection string
-# SESSION_SECRET - Secret for encrypting session cookies
-
-# Workers Functions are automatically detected from the functions/ directory:
-# - functions/api/admin/[[path]].ts -> /api/admin/*
-# - functions/marketing/[[path]].ts -> /marketing/* (API endpoints: /marketing/contact, /marketing/electrician-application)
-
-# URL Structure after deployment:
-# / -> index.html (Marketing home)
-# /what-we-do -> what-we-do.html (Marketing)
-# /become-electrician -> become-electrician.html (Marketing)
-# /admin/ -> admin/index.html (Admin Panel SPA)
-# /marketing/contact -> Workers Function (POST)
-# /marketing/electrician-application -> Workers Function (POST)
-# /api/admin/* -> Workers Functions
+compatibility_date = "2024-12-18"

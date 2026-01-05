@@ -62,6 +62,14 @@ processMarketingPage(
 console.log('🎨 Copying CSS...');
 fs.copyFileSync(MARKETING_CSS, path.join(DIST_DIR, 'marketing.css'));
 
+// Copy functions directory to dist for Cloudflare Pages Functions
+console.log('⚡ Copying functions for Cloudflare Pages...');
+const functionsDir = path.join(ROOT_DIR, 'functions');
+const functionsDist = path.join(DIST_DIR, '_functions');
+if (fs.existsSync(functionsDir)) {
+  copyDirRecursive(functionsDir, functionsDist);
+}
+
 console.log('✅ Build complete! Output in dist/');
 console.log('');
 console.log('Structure:');
@@ -70,9 +78,10 @@ console.log('  ├── index.html          (Home page)');
 console.log('  ├── what-we-do.html     (What We Do page)');
 console.log('  ├── become-electrician.html (Join Us page)');
 console.log('  ├── marketing.css       (Styles)');
-console.log('  └── admin/              (Admin panel SPA)');
-console.log('      ├── index.html');
-console.log('      └── assets/');
+console.log('  ├── admin/              (Admin panel SPA)');
+console.log('  │   ├── index.html');
+console.log('  │   └── assets/');
+console.log('  └── _functions/         (Cloudflare Pages Functions)');
 
 /**
  * Process marketing HTML file - update paths for Cloudflare Pages
@@ -118,4 +127,3 @@ function copyDirRecursive(src, dest) {
     }
   }
 }
-
