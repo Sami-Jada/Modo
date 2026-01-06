@@ -72,10 +72,6 @@ export default function LoginPage() {
             {isLoading ? 'Signing in...' : 'Sign In'}
           </Button>
         </form>
-        
-        <p className={styles.hint}>
-          Default: admin@modo.jo / admin123
-        </p>
       </div>
     </div>
   )
