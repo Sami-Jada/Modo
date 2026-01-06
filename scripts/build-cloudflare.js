@@ -62,19 +62,6 @@ processMarketingPage(
 console.log('🎨 Copying CSS...');
 fs.copyFileSync(MARKETING_CSS, path.join(DIST_DIR, 'marketing.css'));
 
-// Copy functions folder  <-- ADD THIS
-console.log('⚡ Copying Cloudflare Functions...');
-const functionsSource = path.join(ROOT_DIR, 'functions');
-const functionsTarget = path.join(DIST_DIR, 'functions');
-if (fs.existsSync(functionsSource)) {
-  copyDirRecursive(functionsSource, functionsTarget);
-  console.log('  ✓ Functions copied');
-} else {
-  console.log('  ⚠️  No functions folder found');
-}
-
-// NOTE: Functions disabled for now...
-
 // NOTE: Functions disabled for now - bcrypt doesn't work on Cloudflare Workers
 // The marketing site works as static HTML, forms will need a different backend
 
