@@ -19,7 +19,7 @@ import {
   balanceTransactions,
   configs,
   auditLogs,
-} from "../../shared/schema";
+} from "./schema";
 
 // Types
 export interface AdminUser {
