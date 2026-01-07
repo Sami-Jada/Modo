@@ -62,8 +62,9 @@ processMarketingPage(
 console.log('🎨 Copying CSS...');
 fs.copyFileSync(MARKETING_CSS, path.join(DIST_DIR, 'marketing.css'));
 
-// NOTE: Functions disabled for now - bcrypt doesn't work on Cloudflare Workers
-// The marketing site works as static HTML, forms will need a different backend
+// Note: Functions are in /functions directory and handled by Cloudflare Pages automatically
+// They use bcryptjs (pure JS) instead of bcrypt (native) for Workers compatibility
+console.log('📦 Functions will be deployed from /functions directory');
 
 console.log('✅ Build complete! Output in dist/');
 console.log('');
@@ -73,10 +74,14 @@ console.log('  ├── index.html          (Home page)');
 console.log('  ├── what-we-do.html     (What We Do page)');
 console.log('  ├── become-electrician.html (Join Us page)');
 console.log('  ├── marketing.css       (Styles)');
-console.log('  ├── admin/              (Admin panel SPA)');
-console.log('  │   ├── index.html');
-console.log('  │   └── assets/');
-console.log('  └── _functions/         (Cloudflare Pages Functions)');
+console.log('  └── admin/              (Admin panel SPA)');
+console.log('      ├── index.html');
+console.log('      └── assets/');
+console.log('');
+console.log('  functions/              (Cloudflare Pages Functions - deployed separately)');
+console.log('  ├── _shared/            (Shared utilities)');
+console.log('  ├── marketing/          (/marketing/* endpoints)');
+console.log('  └── api/admin/          (/api/admin/* endpoints)');
 
 /**
  * Process marketing HTML file - update paths for Cloudflare Pages

@@ -1,0 +1,9 @@
+# Copy this file to .dev.vars and fill in your values
+# This file is used by wrangler pages dev for local development
+
+# Neon PostgreSQL connection string
+DATABASE_URL=postgresql://user:password@host/database?sslmode=require
+
+# Session encryption secret (should be at least 32 characters)
+SESSION_SECRET=your-secret-key-at-least-32-chars
+
