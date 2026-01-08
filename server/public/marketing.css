@@ -1037,6 +1037,20 @@ a:hover {
   [dir="rtl"] .step-content {
     text-align: right;
   }
+
+  /* Keep RTL row layout on mobile for Arabic */
+  [dir="rtl"] .step-new {
+    flex-direction: row-reverse;
+  }
+
+  [dir="rtl"] .step-number {
+    margin: 0;
+    order: 2;
+  }
+
+  [dir="rtl"] .step-content {
+    order: 1;
+  }
 }
 
 /* RTL Support */
@@ -1047,6 +1061,15 @@ a:hover {
 
 [dir="rtl"] .step-new {
   flex-direction: row-reverse;
+}
+
+/* Ensure step number is on the right in RTL */
+[dir="rtl"] .step-new .step-number {
+  order: 2;
+}
+
+[dir="rtl"] .step-new .step-content {
+  order: 1;
 }
 
 [dir="rtl"] .lang-toggle,
