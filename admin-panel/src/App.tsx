@@ -11,6 +11,7 @@ import CustomersPage from './pages/CustomersPage'
 import LeadsPage from './pages/LeadsPage'
 import ConfigPage from './pages/ConfigPage'
 import AuditLogPage from './pages/AuditLogPage'
+import AdminsPage from './pages/AdminsPage'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, isLoading } = useAuth()
@@ -25,6 +26,28 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   
   if (!user) {
     return <Navigate to="/login" replace />
+  }
+  
+  return <>{children}</>
+}
+
+function SuperadminRoute({ children }: { children: React.ReactNode }) {
+  const { user, isLoading } = useAuth()
+  
+  if (isLoading) {
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+        Loading...
+      </div>
+    )
+  }
+  
+  if (!user) {
+    return <Navigate to="/login" replace />
+  }
+  
+  if (user.role !== 'superadmin') {
+    return <Navigate to="/" replace />
   }
   
   return <>{children}</>
@@ -49,6 +72,14 @@ export default function App() {
                 <Route path="/leads" element={<LeadsPage />} />
                 <Route path="/config" element={<ConfigPage />} />
                 <Route path="/audit-log" element={<AuditLogPage />} />
+                <Route 
+                  path="/admins" 
+                  element={
+                    <SuperadminRoute>
+                      <AdminsPage />
+                    </SuperadminRoute>
+                  } 
+                />
               </Routes>
             </Layout>
           </ProtectedRoute>

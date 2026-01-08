@@ -27,6 +27,11 @@ export const api = {
       }),
     logout: () => request<{ success: boolean }>('/auth/logout', { method: 'POST' }),
     me: () => request<{ id: string; email: string; name: string; role: string }>('/auth/me'),
+    changePassword: (currentPassword: string, newPassword: string) =>
+      request<{ success: boolean; message: string }>('/auth/change-password', {
+        method: 'PATCH',
+        body: JSON.stringify({ currentPassword, newPassword }),
+      }),
   },
   
   applications: {
@@ -133,6 +138,20 @@ export const api = {
       request<MarketingLead>(`/leads/${id}/status`, {
         method: 'PATCH',
         body: JSON.stringify({ status, notes }),
+      }),
+  },
+
+  admins: {
+    list: () => request<AdminUser[]>('/admins'),
+    create: (email: string, password: string, name: string, role: 'superadmin' | 'operator') =>
+      request<AdminUser>('/admins', {
+        method: 'POST',
+        body: JSON.stringify({ email, password, name, role }),
+      }),
+    changePassword: (id: string, newPassword: string) =>
+      request<{ success: boolean; message: string }>(`/admins/${id}/password`, {
+        method: 'PATCH',
+        body: JSON.stringify({ newPassword }),
       }),
   },
 }
@@ -294,4 +313,13 @@ export interface MarketingLead {
   updatedAt: string
   notes?: string
   assignedTo?: string | null
+}
+
+export interface AdminUser {
+  id: string
+  email: string
+  name: string
+  role: 'superadmin' | 'operator'
+  createdAt: string
+  lastLoginAt: string | null
 }

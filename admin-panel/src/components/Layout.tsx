@@ -1,6 +1,7 @@
-import { ReactNode } from 'react'
+import { ReactNode, useState, useEffect, useRef } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
+import ChangePasswordModal from './ChangePasswordModal'
 import {
   LayoutDashboard,
   Users,
@@ -12,6 +13,9 @@ import {
   Settings,
   FileText,
   LogOut,
+  ChevronDown,
+  Key,
+  UserCog,
 } from 'lucide-react'
 import styles from './Layout.module.css'
 
@@ -30,11 +34,32 @@ const navItems = [
 export default function Layout({ children }: { children: ReactNode }) {
   const { user, logout } = useAuth()
   const navigate = useNavigate()
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [changePasswordOpen, setChangePasswordOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+  
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setDropdownOpen(false)
+      }
+    }
+
+    if (dropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [dropdownOpen])
   
   const handleLogout = async () => {
     await logout()
     navigate('/login')
   }
+
+  const isSuperadmin = user?.role === 'superadmin'
   
   return (
     <div className={styles.container}>
@@ -65,15 +90,64 @@ export default function Layout({ children }: { children: ReactNode }) {
             <span className={styles.userName}>{user?.name}</span>
             <span className={styles.userRole}>{user?.role}</span>
           </div>
-          <button onClick={handleLogout} className={styles.logoutBtn}>
-            <LogOut size={18} />
-          </button>
+          <div className={styles.dropdownContainer} ref={dropdownRef}>
+            <button 
+              onClick={() => setDropdownOpen(!dropdownOpen)} 
+              className={styles.dropdownBtn}
+            >
+              <ChevronDown size={18} />
+            </button>
+            {dropdownOpen && (
+              <div className={styles.dropdown}>
+                {isSuperadmin && (
+                  <button
+                    onClick={() => {
+                      setDropdownOpen(false)
+                      navigate('/admins')
+                    }}
+                    className={styles.dropdownItem}
+                  >
+                    <UserCog size={16} />
+                    <span>Admin Users List</span>
+                  </button>
+                )}
+                <button
+                  onClick={() => {
+                    setDropdownOpen(false)
+                    setChangePasswordOpen(true)
+                  }}
+                  className={styles.dropdownItem}
+                >
+                  <Key size={16} />
+                  <span>Change Password</span>
+                </button>
+                <button
+                  onClick={() => {
+                    setDropdownOpen(false)
+                    handleLogout()
+                  }}
+                  className={styles.dropdownItem}
+                >
+                  <LogOut size={16} />
+                  <span>Logout</span>
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </aside>
       
       <main className={styles.main}>
         {children}
       </main>
+
+      <ChangePasswordModal
+        isOpen={changePasswordOpen}
+        onClose={() => setChangePasswordOpen(false)}
+        onSuccess={() => {
+          // Password changed successfully
+        }}
+      />
     </div>
   )
 }

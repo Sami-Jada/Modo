@@ -394,6 +394,45 @@ export class WorkersStorage {
     return bcrypt.hash(password, 10);
   }
 
+  async listAdmins(db: Database): Promise<AdminUser[]> {
+    const rows = await db.select().from(adminUsers).orderBy(adminUsers.createdAt);
+    return rows.map(dbRowToAdminUser);
+  }
+
+  async createAdmin(
+    db: Database,
+    data: {
+      email: string;
+      password: string;
+      name: string;
+      role: "superadmin" | "operator";
+    }
+  ): Promise<AdminUser> {
+    const id = generateUUID();
+    const passwordHash = await this.hashPassword(data.password);
+    
+    const result = await db.insert(adminUsers).values({
+      id,
+      email: data.email,
+      passwordHash,
+      name: data.name,
+      role: data.role,
+    }).returning();
+    
+    return dbRowToAdminUser(result[0]);
+  }
+
+  async updateAdminPassword(
+    db: Database,
+    id: string,
+    newPassword: string
+  ): Promise<void> {
+    const passwordHash = await this.hashPassword(newPassword);
+    await db.update(adminUsers)
+      .set({ passwordHash })
+      .where(eq(adminUsers.id, id));
+  }
+
   // Applications
   async listApplications(db: Database, status?: string): Promise<ElectricianApplication[]> {
     const query = status

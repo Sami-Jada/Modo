@@ -173,6 +173,48 @@ export async function onRequest(context: PagesContext): Promise<Response> {
       });
     }
 
+    // PATCH /api/admin/auth/change-password
+    if (pathStr === "auth/change-password" && method === "PATCH") {
+      if (!isAuthenticated(session)) {
+        return jsonResponse({ error: "Unauthorized" }, 401);
+      }
+
+      const body = await request.json() as { currentPassword?: string; newPassword?: string };
+      const { currentPassword, newPassword } = body;
+
+      if (!currentPassword || !newPassword) {
+        return jsonResponse({ error: "Current password and new password are required" }, 400);
+      }
+
+      if (newPassword.length < 6) {
+        return jsonResponse({ error: "New password must be at least 6 characters" }, 400);
+      }
+
+      const admin = await storage.getAdminById(db, session.adminId!);
+      if (!admin) {
+        return jsonResponse({ error: "Admin not found" }, 404);
+      }
+
+      const valid = await storage.verifyPassword(admin, currentPassword);
+      if (!valid) {
+        return jsonResponse({ error: "Current password is incorrect" }, 400);
+      }
+
+      await storage.updateAdminPassword(db, session.adminId!, newPassword);
+
+      await storage.createAuditLog(db, {
+        adminId: session.adminId!,
+        adminEmail: session.adminEmail!,
+        action: "password_changed",
+        entityType: "auth",
+        entityId: session.adminId!,
+        reason: "Admin changed their password",
+        ipAddress,
+      });
+
+      return jsonResponse({ success: true, message: "Password updated successfully" });
+    }
+
     // ==================== PROTECTED ROUTES ====================
     // All routes below require authentication
 
@@ -645,6 +687,106 @@ export async function onRequest(context: PagesContext): Promise<Response> {
       });
 
       return jsonResponse(lead);
+    }
+
+    // ==================== ADMIN USERS ====================
+
+    // GET /api/admin/admins
+    if (pathStr === "admins" && method === "GET") {
+      if (!isSuperadmin(session)) {
+        return jsonResponse({ error: "Forbidden: Superadmin access required" }, 403);
+      }
+
+      const admins = await storage.listAdmins(db);
+      return jsonResponse(admins.map(admin => ({
+        id: admin.id,
+        email: admin.email,
+        name: admin.name,
+        role: admin.role,
+        createdAt: admin.createdAt.toISOString(),
+        lastLoginAt: admin.lastLoginAt?.toISOString() || null,
+      })));
+    }
+
+    // POST /api/admin/admins
+    if (pathStr === "admins" && method === "POST") {
+      if (!isSuperadmin(session)) {
+        return jsonResponse({ error: "Forbidden: Superadmin access required" }, 403);
+      }
+
+      const body = await request.json() as { email?: string; password?: string; name?: string; role?: string };
+      const { email, password, name, role } = body;
+
+      if (!email || !password || !name || !role) {
+        return jsonResponse({ error: "Email, password, name, and role are required" }, 400);
+      }
+
+      if (!["superadmin", "operator"].includes(role)) {
+        return jsonResponse({ error: "Role must be 'superadmin' or 'operator'" }, 400);
+      }
+
+      if (password.length < 6) {
+        return jsonResponse({ error: "Password must be at least 6 characters" }, 400);
+      }
+
+      // Check if admin with email already exists
+      const existing = await storage.getAdminByEmail(db, email);
+      if (existing) {
+        return jsonResponse({ error: "Admin with this email already exists" }, 400);
+      }
+
+      const admin = await storage.createAdmin(db, {
+        email,
+        password,
+        name,
+        role: role as "superadmin" | "operator",
+      });
+
+      await logAction("admin_created", "admin_user", admin.id, `Created admin user: ${email}`, {
+        adminEmail: email,
+        adminName: name,
+        adminRole: role,
+      });
+
+      return jsonResponse({
+        id: admin.id,
+        email: admin.email,
+        name: admin.name,
+        role: admin.role,
+        createdAt: admin.createdAt.toISOString(),
+      }, 201);
+    }
+
+    // PATCH /api/admin/admins/:id/password
+    if (pathStr.match(/^admins\/[^/]+\/password$/) && method === "PATCH") {
+      if (!isSuperadmin(session)) {
+        return jsonResponse({ error: "Forbidden: Superadmin access required" }, 403);
+      }
+
+      const id = path[1];
+      const body = await request.json() as { newPassword?: string };
+      const { newPassword } = body;
+
+      if (!newPassword) {
+        return jsonResponse({ error: "New password is required" }, 400);
+      }
+
+      if (newPassword.length < 6) {
+        return jsonResponse({ error: "Password must be at least 6 characters" }, 400);
+      }
+
+      const admin = await storage.getAdminById(db, id);
+      if (!admin) {
+        return jsonResponse({ error: "Admin not found" }, 404);
+      }
+
+      await storage.updateAdminPassword(db, id, newPassword);
+
+      await logAction("admin_password_changed", "admin_user", id, `Password changed for admin: ${admin.email}`, {
+        adminEmail: admin.email,
+      });
+
+      return jsonResponse({ success: true, message: "Password updated successfully" });
     }
 
     // ==================== 404 ====================
