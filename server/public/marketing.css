@@ -795,6 +795,8 @@ a:hover {
   font-weight: 700;
   color: #F59E0B;
   flex-shrink: 0;
+  line-height: 1.2;
+  margin-top: 2px;
 }
 
 .step-content {
@@ -1022,11 +1024,18 @@ a:hover {
 
   .step-new {
     flex-direction: column;
-    text-align: center;
   }
 
   .step-number {
-    margin: 0 auto;
+    margin: 0 auto 8px auto;
+  }
+
+  .step-content {
+    text-align: left;
+  }
+
+  [dir="rtl"] .step-content {
+    text-align: right;
   }
 }
 

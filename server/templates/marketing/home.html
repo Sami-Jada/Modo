@@ -10,6 +10,9 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://modohq.app/">
   
+  <!-- Critical CSS - Load first to prevent FOUC -->
+  <link rel="stylesheet" href="/marketing/styles.css">
+  
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://modohq.app/">
@@ -45,8 +48,6 @@
     "priceRange": "$$"
   }
   </script>
-  
-  <link rel="stylesheet" href="/marketing/styles.css">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0QKB21M48E">
@@ -213,7 +214,7 @@
           </div>
           
           <button type="submit" class="submit-btn-new" id="submit-btn">
-            <span id="submit-text">Submit Request →</span>
+            <span id="submit-text">Request an Electrician →</span>
           </button>
           
           <p class="form-disclaimer" id="form-disclaimer">
@@ -346,7 +347,7 @@
           addressPlaceholder: "Where do you need the electrician?",
           issueLabel: "Describe Your Problem",
           issuePlaceholder: "e.g. Power outlet not working, lights flickering, need new installation...",
-          submit: "Get Free Quote →",
+          submit: "Request an Electrician →",
           disclaimer: "No obligation • Response within 30 minutes • Get your fixed price"
         },
         call: {
@@ -407,7 +408,7 @@
           addressPlaceholder: "أين تحتاج الكهربائي؟",
           issueLabel: "صِف مشكلتك",
           issuePlaceholder: "مثال: مقبس لا يعمل، أضواء تومض، تحتاج تركيب جديد...",
-          submit: "احصل على عرض سعر مجاني ←",
+          submit: "اطلب كهربائي ←",
           disclaimer: "بدون التزام • رد خلال 30 دقيقة • احصل على سعرك الثابت"
         },
         call: {
@@ -620,7 +621,7 @@
         messageEl.innerHTML = '<div class="form-error">' + errorMsg + '</div>';
       } finally {
         submitBtn.disabled = false;
-        const submitText = currentLanguage === 'en' ? 'Submit Request →' : 'إرسال الطلب ←';
+        const submitText = currentLanguage === 'en' ? 'Request an Electrician →' : 'اطلب كهربائي ←';
         submitBtn.innerHTML = '<span id="submit-text">' + submitText + '</span>';
       }
     });

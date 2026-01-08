@@ -28,6 +28,9 @@ router.get("/styles.css", (req: Request, res: Response) => {
   const cssPath = path.resolve(process.cwd(), "server", "public", "marketing.css");
   if (fs.existsSync(cssPath)) {
     res.setHeader("Content-Type", "text/css");
+    // Add caching headers to improve performance
+    res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+    res.setHeader("ETag", `"${fs.statSync(cssPath).mtime.getTime()}"`);
     res.sendFile(cssPath);
   } else {
     res.status(404).send("/* CSS not found */");
