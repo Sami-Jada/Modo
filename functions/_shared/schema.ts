@@ -185,3 +185,4 @@ export const auditLogs = pgTable("audit_logs", {
   ipAddress: text("ip_address"),
 });
 
+

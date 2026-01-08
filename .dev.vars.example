@@ -7,3 +7,4 @@ DATABASE_URL=postgresql://user:password@host/database?sslmode=require
 # Session encryption secret (should be at least 32 characters)
 SESSION_SECRET=your-secret-key-at-least-32-chars
 
+
